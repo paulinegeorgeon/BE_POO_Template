@@ -1,16 +1,10 @@
-#include <iostream> 
-#include "string.h"
-#include "math.h"
+#include "Actionneurs.h"
 
-#include "Peripheriques.h"
 
-using namespace std;
+   Actionneurs::Actionneurs(int p) {p=pin};
 
-class Actionneurs : public Peripheriques{
-  protected : 
-    int pin;
-  public : 
-    Actionneurs(int p) {p=pin};
-    virtual void initialiser() =0;
-    virtual void eteindre() =0;
+   virtual void Actionneurs::initialiser() =0;
+
+   virtual void Actionneurs::eteindre()=0;
+
 }

@@ -1,7 +1,7 @@
 /*********************************************************************
  * @file  Apllication.h
  * @author <mettre l'adresse mail ou nom prenom>
- * @brief Fichier header de l'application
+ * @brief Fichier de classe 
  *********************************************************************/
 #ifndef APPLICATION_H_
 #define APPLICATION_H_

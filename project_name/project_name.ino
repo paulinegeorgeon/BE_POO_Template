@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 Application myApplication;
 
 void setup() 
@@ -12,4 +13,7 @@ void loop()
 {
   // put your main code here, to run repeatedly:
   myApplication.run();
+  Ecran_LCD.initialiser();
+  Ecran_LCD.afficherMessage("Coucou","Les loups se réveillent");
+
 }
