@@ -1,14 +1,46 @@
-#include <iostream> 
-#include "string.h"
-#include "math.h"
+/*********************************************************************
+ * @file  Peripheriques.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier header pour tous les périphs
+ *********************************************************************/
 
-using namespace std;
+#ifndef PERIPHERIQUES_H_
+#define PERIPHERIQUES_H_
 
-class peripheriques{
+/**
+  * @class Peripheriques
+  * @brief Classe peripheriques
+*/    
+
+class Peripheriques{
+
   protected : 
+  
+     /**
+     * @fn int pin;
+     * @brief pin associé au périph 
+    */ 
     int pin;
+
   public: 
-    peripheriques(int p){p=pin;};
-    virtual ~peripheriques() {};
-    virtual void initialiser () =0;
+
+    /**
+     * @fn peripheriques(int p)
+     * @brief constructeur avec le pin associé au périph
+    */ 
+    Peripheriques(int p);
+
+    /**
+     * @fn peripheriques()
+     * @brief destructeur
+    */ 
+    virtual ~Peripheriques();
+
+    /**
+     * @fn virtual void initiliser()
+     * @brief initialisaiton du peripherique
+    */ 
+    virtual void initialiser()=0;
 };
+
+#endif

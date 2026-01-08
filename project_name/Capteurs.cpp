@@ -1,16 +1,15 @@
+/*********************************************************************
+ * @file  Capteurs.cpp
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe capteur qui hérite de périphériques
+ *********************************************************************/
+
 #include <iostream> 
 #include "string.h"
 #include "math.h"
-
 #include "Capteurs.h"
 #include "Peripheriques.h"
 
 using namespace std;
 
-class Capteurs : public Peripheriques{
-  protected : 
-    int pin;
-  public : 
-    Capteurs(int p) {p=pin};
-    virtual int getValue() {};
-}
+Capteurs::Capteurs(int p) : Peripheriques(p){}; //constructeur avec le pin associé au périph

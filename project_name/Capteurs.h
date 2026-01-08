@@ -1,16 +1,28 @@
-#include <iostream> 
-#include "string.h"
-#include "math.h"
+/*********************************************************************
+ * @file  Capteurs.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe capteur qui hérite de périphériques
+ *********************************************************************/
 
-#include "Capteurs.h"
+#ifndef CAPTEURS_H_
+#define CAPTEURS_H_
+
 #include "Peripheriques.h"
 
-using namespace std;
-
-class Capteurs : public Peripheriques{
-  protected : 
-    int pin;
+class Capteurs : public Peripheriques {
+  
   public : 
-    Capteurs(int p) {p=pin};
-    virtual int getValue() {};
-}
+    /**
+     * @fn Capteurs(int p)
+     * @brief constructeur avec le pin associé au périph
+    */ 
+    Capteurs(int p);
+
+    /**
+     * @fn getValue()
+     * @brief récupère la valeur du capteur 
+    */ 
+    virtual int getValue()=0;
+};
+
+#endif
