@@ -4,13 +4,8 @@
  * @brief Fichier classe bouton tactile qui hérite de capteurs
  *********************************************************************/
 
-#include <iostream> 
 #include <Arduino.h>
-#include "string.h"
-#include "math.h"
 #include "Bouton_tactile.h"
-#include "Capteurs.h"
-#include "Peripheriques.h"
 
 using namespace std;
 

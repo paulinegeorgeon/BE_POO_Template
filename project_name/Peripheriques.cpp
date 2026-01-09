@@ -3,10 +3,7 @@
  * @author CALVO - YOGALINGAM - GEORGEON
  * @brief Fichier header pour tous les périphs
  *********************************************************************/
- 
-#include <iostream> 
-#include "string.h"
-#include "math.h"
+
 #include "Peripheriques.h"
 
 using namespace std;
