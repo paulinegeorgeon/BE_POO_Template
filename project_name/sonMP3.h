@@ -8,10 +8,12 @@
 #ifndef MP3_H
 #define MP3_H
 
+#include "SeeedGroveMP3.h"
+#include "KT403A_Player.h"
 #include "Actionneurs.h"
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <MP3Player_KT403A.h>
+//#include <Seeed_Serial_MP3_Player.h>
 
 
 /**
@@ -19,11 +21,12 @@
   * @brief Classe Application 
 */   
 
-class MP3 {
+class MP3 : public Actionneurs{
 private:
     SoftwareSerial* _mp3Serial; // Pointeur pour gérer la liaison série logicielle
     uint8_t _rxPin;
     uint8_t _txPin;
+    KT403A<SoftwareSerial> _player;
 
 public:
     /**
@@ -42,7 +45,7 @@ public:
      * @fn void init(uint8_t defaultVolume)
      * @brief Fonction d'initialisation de l'application (à appeler dans le setup)
     */ 
-    void init(uint8_t defaultVolume = 20);
+    void initialiser(uint8_t defaultVolume = 20);
 
     /**
      * @fn void playAudio(uint8_t folder, uint8_t index);
@@ -62,17 +65,7 @@ public:
     */                                  
     void setVolume(uint8_t volume);  
 
-    /**
-     * @fn next();
-     * @brief Fonction qui joue la piste d'après
-    */ 
-    void next();                                   
-
-    /**
-     * @fn previous();
-     * @brief Fonction qui joue la piste d'avant
-    */ 
-    void previous();                               
+    
 };
 
 #endif
