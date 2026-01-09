@@ -26,13 +26,23 @@ class Bouton_tactile : public Capteurs{
 
   public :
 
-      /**
+    /**
      * @fn Bouton_tactile(int p)
      * @brief constructeur avec le pin associé au bouton tactile
     */ 
     Bouton_tactile(int p);
 
+    /**
+     * @fn getValue()
+     * @brief fonction qui renvoie la valeur du capteur
+    */ 
     int getValue(); 
+
+    /**
+     * @fn intialiser()
+     * @brief initialise le bouton tactile 
+    */ 
+    void initialiser(); 
 
 }; 
 #endif
