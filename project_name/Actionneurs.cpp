@@ -1,10 +1,4 @@
 #include "Actionneurs.h"
 
 
-   Actionneurs::Actionneurs(int p) {p=pin};
-
-   virtual void Actionneurs::initialiser() =0;
-
-   virtual void Actionneurs::eteindre()=0;
-
-}
+   Actionneurs::Actionneurs(int p) : Peripheriques(p) {};

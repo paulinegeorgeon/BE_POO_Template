@@ -1,7 +1,9 @@
 #include "Application.h"
-
+#include "Ecran_LED.h"
 
 Application myApplication;
+
+Ecran_LED MonEcran;
 
 void setup() 
 {
@@ -13,7 +15,7 @@ void loop()
 {
   // put your main code here, to run repeatedly:
   myApplication.run();
-  Ecran_LCD.initialiser();
-  Ecran_LCD.afficherMessage("Coucou","Les loups se réveillent");
+  MonEcran.initialiser();
+  MonEcran.Afficher_message("Coucou","Les loups se réveillent");
 
 }

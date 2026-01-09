@@ -31,7 +31,7 @@ class Actionneurs : public Peripheriques
      * @fn Actionnneurs();
      * @brief Constructeur par defaut
     */    
-    Actionneurs(int p) : Peripheriques(p) {}
+    Actionneurs(int p);
 
     /**
      * @fn ~Actionneurs();
@@ -39,16 +39,11 @@ class Actionneurs : public Peripheriques
     */    
     ~Actionneurs();
 
-    /**
-     * @fn void init()
-     * @brief Fonction d'initialisation de l'actionneur
-    */
-    virtual void initialiser() =0;
 
     /**
      * @fn void eteindre()
      * @brief Fonction d'extinction de l'actionneur
     */
     virtual void eteindre() =0;
-}
+};
 #endif

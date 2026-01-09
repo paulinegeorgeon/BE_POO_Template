@@ -8,8 +8,8 @@
  * @brief Fichier Ecran_LED hérite de Actionneurs
  *********************************************************************/
  
-#ifndef ECRAN_LCD_H
-#define ECRAN_LCD_H
+#ifndef ECRAN_LED_H
+#define ECRAN_LED_H
 
 
 #include <rgb_lcd.h>
@@ -42,22 +42,16 @@ class Ecran_LED : public Actionneurs
     ~Ecran_LED();
 
     /**
-     * @fn void init()
-     * @brief Fonction d'initialisation de l'ecran
-    */
-
-    void initialiser() {}; 
-
-    /**
      * @fn void Afficher_message()
      * @brief Fonction d'affichage sur l'écran 
     */   
-    void Afficher_message() {}; 
+    void Afficher_message(String ligne1, String ligne2); 
 
         /**
      * @fn void eteindre()
      * @brief Fonction d'extinction de l'actionneur
     */
     void eteindre();
-}
+    void initialiser();
+};
 #endif
