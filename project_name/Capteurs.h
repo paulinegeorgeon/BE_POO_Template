@@ -9,6 +9,11 @@
 
 #include "Peripheriques.h"
 
+
+/**
+  * @class Capteurs
+  * @brief Classe Capteurs 
+*/    
 class Capteurs : public Peripheriques {
   
   public : 

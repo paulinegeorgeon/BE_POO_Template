@@ -1,12 +1,38 @@
-#include <iostream> 
-#include "string.h"
-#include "math.h"
+/*********************************************************************
+ * @file  Bouton_tactile.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe bouton tactile qui hérite de capteurs
+ *********************************************************************/
 
-#include "CAPTEURS.H"
+#ifndef BOUTON_TACTILE_H_
+#define BOUTON_TACTILE_H_
 
-using namespace std;
+#include "Capteurs.h"
 
+/**
+  * @class Bouton_tactile
+  * @brief Bouton tactile 
+*/    
 class Bouton_tactile : public Capteurs{
+
   protected : 
-   
-}
+  
+    /**
+     * @fn sensorValue
+     * @brief valeur du capteur (0 ou 1)
+    */ 
+    int sensorValue; 
+
+
+  public :
+
+      /**
+     * @fn Bouton_tactile(int p)
+     * @brief constructeur avec le pin associé au bouton tactile
+    */ 
+    Bouton_tactile(int p);
+
+    int getValue(); 
+
+}; 
+#endif

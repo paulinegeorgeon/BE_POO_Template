@@ -34,7 +34,7 @@ class Peripheriques{
      * @fn peripheriques()
      * @brief destructeur
     */ 
-    virtual ~Peripheriques();
+    ~Peripheriques();
 
     /**
      * @fn virtual void initiliser()
