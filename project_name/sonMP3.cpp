@@ -47,7 +47,7 @@ void MP3::setVolume(uint8_t volume)
   if (volume > 30){
     volume = 30;
   }
-  SetVolume(volume);
+  setVolume(volume);
 
 }
 
