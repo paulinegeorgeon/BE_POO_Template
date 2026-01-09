@@ -2,3 +2,7 @@
 
 
    Actionneurs::Actionneurs(int p) : Peripheriques(p) {};
+   Actionneurs::~Actionneurs() 
+   {
+      ;
+   };

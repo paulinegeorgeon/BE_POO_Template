@@ -8,14 +8,14 @@ Ecran_LED MonEcran;
 void setup() 
 {
   // put your setup code here, to run once:
-  myApplication.init();
+  myApplication.init(); 
+  MonEcran.initialiser();
 }
 
 void loop() 
 {
   // put your main code here, to run repeatedly:
   myApplication.run();
-  MonEcran.initialiser();
-  MonEcran.Afficher_message("Coucou","Les loups se réveillent");
+ MonEcran.Afficher_message("Coucou","Les loups se réveillent");
 
 }

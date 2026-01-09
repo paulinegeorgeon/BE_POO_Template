@@ -2,6 +2,15 @@
 #include "Ecran_LED.h"
 #include "Actionneurs.h"
 
+Ecran_LED::Ecran_LED():Actionneurs(0) 
+{
+    ;
+};
+
+Ecran_LED::~Ecran_LED()
+{
+    ;
+}
 
 void Ecran_LED::initialiser() {
     lcd.begin(16, 2); // Ecran 16 colonnes, 2 lignes [cite: 98]

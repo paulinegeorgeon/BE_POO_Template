@@ -33,7 +33,7 @@ class Ecran_LED : public Actionneurs
      * @fn Ecran_LED();
      * @brief Constructeur par defaut
     */    
-    Ecran_LED() : Actionneurs(0) {};
+    Ecran_LED();
 
     /**
      * @fn ~Ecran_LED();
