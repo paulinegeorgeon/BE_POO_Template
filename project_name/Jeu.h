@@ -7,15 +7,23 @@
 #ifndef JEU_H_
 #define JEU_H_
 
-#include <iostream> 
 #include "Arduino.h"
 #include "string.h"
-using namespace std;
+#include "Joueur.h"
 
-class Jeu : public Joueur {
+
+class Jeu {
   private : 
+  String rolesDisponibles[6] = {
+        "Maladroit", 
+        "Barman", 
+        "Gratteur Verre 1", 
+        "Gratteur Verre 2",
+        "Capote de Verre", 
+        "Ethylotest"
+    };
 
-  Joueur Joueurs[6]{Joueur1,Joueur2,Joueur3,Joueur4,Joueur5,Joueur6};
+  Joueur listeJoueurs[6];
 
   public: 
       /**
@@ -33,7 +41,10 @@ class Jeu : public Joueur {
      * @fn RepartitionRoles();
      * @brief Pour chaque joueur, donne son rôle et initialise le nb gorgees
     */    
-  void RepartitionRoles () {};
+  void RepartitionRoles ();
+  
+  Joueur* getJoueur(int index);
   
 
-}
+}; 
+#endif

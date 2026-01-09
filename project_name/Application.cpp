@@ -6,10 +6,13 @@
 #include "Application.h"
 #include "Ecran_LED.h"
 #include "Bouton_tactile.h"
+#include "Jeu.h"
 
 Ecran_LED MonEcran;
 
 Bouton_tactile MyBouton(13);
+
+Jeu NouveauJeu;
 
 Application::Application()
 {
@@ -27,13 +30,19 @@ void Application::init(void)
 {
   MonEcran.initialiser();
   MyBouton.initialiser(); 
+  NouveauJeu.RepartitionRoles();
 }
 
 
 void Application::run(void)
 {
-  MonEcran.Afficher_message("Coucou","Les loups se réveillent");
-  delay(1000); 
+
+  MonEcran.Afficher_message("Tout le monde","dort sauf J1!");
+  delay(10000); 
   MonEcran.Afficher_message("Bouton appuyé? ", String(MyBouton.getValue())); 
-  delay(1000);
+  delay(1000);   
+  for (int i = 0; i < 6; i++) {
+  MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
+  delay(10000);
+    }
 }
