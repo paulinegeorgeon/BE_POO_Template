@@ -20,10 +20,11 @@ class Joueur
 {
   private :
 
-  String Roles[5] = {"Maladroit", "Barman", "Gratteur Verre", "Capote de Verre", "Ethylotest"};  
   String Role; 
   int nbGorgees;
   bool estmort; 
+
+  bool estImmunise;
 
   public :
     /**
@@ -36,11 +37,6 @@ class Joueur
      * @brief Destructeur
     */    
     ~Joueur();    
-    /**
-     * @fn void init(void)
-     * @brief Fonction d'initialisation de l'application
-    */
-    void init(void);
 
     /**
      * @fn void setRole()
@@ -79,6 +75,11 @@ class Joueur
     */ 
     bool getEstMort();
 
+    void setImmunise();
+    bool getImmunise();
+
+    void AjouterGorgees();
+    void RetirerGorgees();
 
 };
 #endif
