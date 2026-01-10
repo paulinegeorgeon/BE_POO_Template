@@ -10,6 +10,7 @@
 #include "Capteurs.h"
 #include <Arduino.h>
 #include <Wire.h>
+#include <i2c_touch_sensor.h>
 
 /**
   * @class Bouton_tactile
@@ -33,7 +34,7 @@ class Bouton_tactile_I2C : public Capteurs{
      * @fn Bouton_tactile(uint8_t num_bouton)
      * @brief constructeur avec le pin associé au bouton tactile
     */ 
-    Bouton_tactile_I2C(uint8_t num_bouton);
+    Bouton_tactile_I2C(int Num);
 
     /**
      * @fn getValue()

@@ -9,20 +9,29 @@
 
 using namespace std;
 
-Bouton_tactile_I2C::Bouton_tactile_I2C(uint8_t num_bouton){ //constructeur avec numéro du bouton tactile 
-  Num_Capteur = num_bouton; 
+i2ctouchsensor touchsensor;
+
+Bouton_tactile_I2C::Bouton_tactile_I2C(int Num){
+  Num_Capteur = Num; 
 }; 
 
 int Bouton_tactile_I2C::getValue (){
-    Wire.requestFrom(0x5A, (uint8_t)1); //l'I2C envoi un octet 
-    if (Wire.available()) { //vérifie si les données sont disponibles 
-        uint8_t data = Wire.read(); //lit les données de l'I2C
-        return (data & (1 << Num_Capteur)); //retourne la valeur du num_capteur  
-    }
-    else return 0;
+  touchsensor.readTouchInputs();
+  touchsensor.getTouchState();
+  if (touchsensor.touched & (1<<Num_Capteur)){
+    return 1;
+  }
+  return 0 ; 
+    //Wire.requestFrom(0x5A, (uint8_t)1); //l'I2C envoi un octet 
+    //if (Wire.available()) { //vérifie si les données sont disponibles 
+    //    uint8_t data = Wire.read(); //lit les données de l'I2C
+    //   return (data & (1 << Num_Capteur)? 1 : 0); //retourne la valeur du num_capteur  
+    //}
+    //else return 0;
 };
 
 
 void Bouton_tactile_I2C::initialiser(){ //initialise tout l'I2C touch sensor 
   Wire.begin();
+  touchsensor.initialize();   
 };
