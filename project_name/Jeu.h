@@ -44,6 +44,11 @@ class Jeu {
   void RepartitionRoles ();
   
   Joueur* getJoueur(int index);
+
+  void ajouterGorgees(int index);
+  void retirerGorgees(int index);
+
+  void immuniserJoueur(int index);
   
 
 }; 

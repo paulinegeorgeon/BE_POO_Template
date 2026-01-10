@@ -25,7 +25,6 @@ class Joueur
   bool estmort; 
 
   bool estImmunise;
-
   public :
     /**
      * @fn Joueur();
@@ -77,9 +76,6 @@ class Joueur
 
     void setImmunise();
     bool getImmunise();
-
-    void AjouterGorgees();
-    void RetirerGorgees();
 
 };
 #endif

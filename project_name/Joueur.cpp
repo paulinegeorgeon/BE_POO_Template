@@ -37,11 +37,10 @@ void Joueur::setEstMort(bool EstMort) {
 bool Joueur::getEstMort() {
   return estmort;
 }
-
-void Joueur::AjouterGorgees(){
-  nbGorgees +=1;
+void Joueur::setImmunise() {
+  estImmunise = true;
 }
 
-void Joueur::RetirerGorgees(){
-  nbGorgees -=1;
+bool Joueur::getImmunise(){
+  return estImmunise;
 }
