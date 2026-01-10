@@ -1,7 +1,7 @@
 #include "Nuit.h"
 
-Nuit::Nuit(Jeu& j, Ecran_LED& e, Actionneurs& a) 
-: jeuRef(j), ecranRef(e), actionneursRef(a) 
+Nuit::Nuit(Jeu& j, Ecran_LED& e) 
+: jeuRef(j), ecranRef(e)
 {
 }
 

@@ -11,7 +11,6 @@ class Nuit {
 
     Jeu& jeuRef;
     Ecran_LED& ecranRef;
-    Actionneurs& actionneursRef;
     int cntGratteurs;
 
     /**
@@ -29,7 +28,7 @@ class Nuit {
 
   public:
     // Constructeur qui prend les objets existants
-    Nuit(Jeu& jeu, Ecran_LED& ecran, Actionneurs& actionneurs);
+    Nuit(Jeu& jeu, Ecran_LED& ecran);
 
     // La fonction principale qui lance toute la séquence
     void lancerLaNuit();

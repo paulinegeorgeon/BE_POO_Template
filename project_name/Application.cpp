@@ -8,6 +8,7 @@
 #include "Bouton_tactile.h"
 #include "Jeu.h"
 #include "sonMP3.h"
+#include "Nuit.h"
 
 Ecran_LED MonEcran;
 
@@ -15,6 +16,7 @@ Bouton_tactile MyBouton(13);
 
 Jeu NouveauJeu;
 SONMP3 MonSon(14,12);
+Nuit MaNuit(NouveauJeu,MonEcran);
 
 Application::Application()
 {
@@ -48,5 +50,7 @@ void Application::run(void)
   for (int i = 0; i < 6; i++) {
   MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
   delay(10000);
+  MaNuit.lancerLaNuit();
+
     }
 }
