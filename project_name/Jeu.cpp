@@ -44,3 +44,17 @@ Joueur* Jeu::getJoueur(int index) {
         return nullptr; // Retourne rien si l'index est invalide
     }
 }
+
+void Jeu::ajouterGorgees(int indexcible){
+    listeJoueurs[indexcible].setNbGorgees(listeJoueurs[indexcible].getNbGorgees()+1);
+}
+
+void Jeu::retirerGorgees(int indexcible){
+    
+    listeJoueurs[indexcible].setNbGorgees(listeJoueurs[indexcible].getNbGorgees()-1);
+}
+
+void Jeu::immuniserJoueur(int index) {
+    
+  listeJoueurs[index].setImmunise();
+}

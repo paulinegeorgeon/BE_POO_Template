@@ -28,6 +28,7 @@ class SONMP3 : public Actionneurs
     uint8_t _txPin;
     void sendCmd(uint8_t cmd, uint16_t dat); 
 
+
   public : 
     // Constructeur : on définit les pins ici
     SONMP3(uint8_t rx, uint8_t tx);
@@ -40,5 +41,6 @@ class SONMP3 : public Actionneurs
     void playSong(uint8_t file);
     void setVolume(uint8_t volume);
     void eteindre();
+
 };
 #endif

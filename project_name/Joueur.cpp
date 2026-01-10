@@ -5,8 +5,9 @@ using namespace std;
 
 Joueur::Joueur() {
   estmort = false;
-  nbGorgees =0;
+  nbGorgees =7;
   Role="";
+  estImmunise=false;
 }
 
 Joueur::~Joueur() {
@@ -35,4 +36,11 @@ void Joueur::setEstMort(bool EstMort) {
 
 bool Joueur::getEstMort() {
   return estmort;
+}
+void Joueur::setImmunise() {
+  estImmunise = true;
+}
+
+bool Joueur::getImmunise(){
+  return estImmunise;
 }
