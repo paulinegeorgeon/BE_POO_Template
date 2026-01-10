@@ -1,37 +1,44 @@
-#ifndef MP3_H
-#define MP3_H
+/*********************************************************************
+ * @file  sonMP3.h
+ * @author Emma/Raksika/Pauline
+ * @brief Fichier sonMP3 hérite de Actionneurs
+ *********************************************************************/
+ 
+#ifndef SONMP3_H
+#define SONMP3_H
 
-#include "Actionneurs.h"
+
+#include <Arduino.h>
 #include <SoftwareSerial.h>
-#include <DFRobotDFPlayerMini.h> //plus simple apparemment ??
+#include "Actionneurs.h"
+using namespace std;
 
-class MP3 : public Actionneurs{
-  private:
-    SoftwareSerial* _mp3Serial;
-    DFRobotDFPlayerMini _player; 
 
-  public:
-    //constructeur 
-    MP3(uint8_t rxPin, uint8_t txPin) : Actionneurs(rxPin){
-        _mp3Serial = new SoftwareSerial(rxPin, txPin);
-    }
+/**
+  * @class SONMP3
+  * @brief Classe SONMP3
+*/  
 
-    //plus de virtual 
-    void initialiser() {
-        _mp3Serial->begin(9600);
-        if (!_player.begin(*_mp3Serial)) {
-            Serial.println("Erreur de communication avec le module MP3");
-        }
-        _player.volume(20); 
-    }
+class SONMP3 : public Actionneurs
+{
+  protected : 
 
-    void playAudio(uint8_t folder, uint8_t index) {
-        _player.playFolder(folder, index);
-    }
+    SoftwareSerial* _serial;
+    uint8_t _rxPin;
+    uint8_t _txPin;
+    void sendCmd(uint8_t cmd, uint16_t dat); 
 
-    void eteindre() {
-      _player.stop();
-    }
+  public : 
+    // Constructeur : on définit les pins ici
+    SONMP3(uint8_t rx, uint8_t tx);
+    
+    // Destructeur
+    ~SONMP3();
+
+    // Méthodes de base
+    void initialiser();
+    void playSong(uint8_t file);
+    void setVolume(uint8_t volume);
+    void eteindre();
 };
-
 #endif

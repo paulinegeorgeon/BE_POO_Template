@@ -14,7 +14,7 @@ Ecran_LED MonEcran;
 Bouton_tactile MyBouton(13);
 
 Jeu NouveauJeu;
-MP3 MonSon(D9,D10);
+SONMP3 MonSon(14,12);
 
 Application::Application()
 {
@@ -34,12 +34,13 @@ void Application::init(void)
   MyBouton.initialiser(); 
   NouveauJeu.RepartitionRoles();
   MonSon.initialiser();
+  MonSon.setVolume(20);
 }
 
 
 void Application::run(void)
 {
-  MonSon.playAudio(1,1);
+  MonSon.playSong(1);
   MonEcran.Afficher_message("Tout le monde","dort sauf J1!");
   delay(10000); 
   MonEcran.Afficher_message("Bouton appuyé? ", String(MyBouton.getValue())); 
