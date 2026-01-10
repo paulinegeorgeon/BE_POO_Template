@@ -31,7 +31,7 @@ class MP3 : public Actionneurs{
 
     void eteindre() {
       _player.stop();
-    }
+    }  
 };
 
 #endif

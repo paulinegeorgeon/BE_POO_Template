@@ -8,6 +8,10 @@
 
 using namespace std;
 
+Peripheriques::Peripheriques(){  //Constructeur nul
+}; 
+
+
 Peripheriques::Peripheriques(int p){  //Constructeur 
       pin = p; 
 }; 

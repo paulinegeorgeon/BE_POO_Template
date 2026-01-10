@@ -22,7 +22,13 @@ class Peripheriques{
     */ 
     int pin;
 
-  public: 
+  public:
+
+    /**
+     * @fn peripheriques()
+     * @brief constructeur nul
+    */ 
+    Peripheriques(); 
 
     /**
      * @fn peripheriques(int p)

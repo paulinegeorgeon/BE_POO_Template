@@ -17,6 +17,12 @@
 class Capteurs : public Peripheriques {
   
   public : 
+      /**
+     * @fn Capteurs()
+     * @brief constructeur nul
+    */ 
+    Capteurs();
+
     /**
      * @fn Capteurs(int p)
      * @brief constructeur avec le pin associé au périph
