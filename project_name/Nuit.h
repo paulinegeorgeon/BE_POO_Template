@@ -5,12 +5,14 @@
 #include "Jeu.h"
 #include "Ecran_LED.h"
 #include "Actionneurs.h" 
+#include "sonMP3.h" 
 
 class Nuit {
   private:
 
     Jeu& jeuRef;
     Ecran_LED& ecranRef;
+    SONMP3& sonRef;
     int cntGratteurs;
 
     /**
@@ -28,7 +30,7 @@ class Nuit {
 
   public:
     // Constructeur qui prend les objets existants
-    Nuit(Jeu& jeu, Ecran_LED& ecran);
+    Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son);
 
     // La fonction principale qui lance toute la séquence
     void lancerLaNuit();

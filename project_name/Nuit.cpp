@@ -1,16 +1,13 @@
 #include "Nuit.h"
 
-Nuit::Nuit(Jeu& j, Ecran_LED& e) 
-: jeuRef(j), ecranRef(e)
+Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s) 
+: jeuRef(j), ecranRef(e), sonRef(s)
 {
 }
-
 
 int Nuit::selectionnerJoueur(){
   return 1;
 }
-
-// --- LES TOURS SPÉCIFIQUES ---
 
 void Nuit::tourBarman() {
     ecranRef.Afficher_message("Le Barman", "se reveille");
@@ -107,18 +104,24 @@ void Nuit::tourEthylotest() {
 // --- LE CHEF D'ORCHESTRE ---
 
 void Nuit::lancerLaNuit() {
+
     // 0. Reset des stats temporaires a faire 
     //jeuRef.resetTour();
     ecranRef.Afficher_message("La Nuit", "Tombe...");
+    sonRef.playSong(1);
     delay(2000);
 
     // 1. Scénario
     tourBarman();
+    delay(2000);
     tourCDV();
+    delay(2000);
     tourGratteur();
+    delay(2000);
     tourEthylotest(); 
+    delay(2000);
     tourMaladroit();
-
+    delay(2000);
     // Fin
     ecranRef.Afficher_message("Le Village", "Se reveille !");
     delay(2000);
