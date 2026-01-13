@@ -27,14 +27,14 @@ class Jour
     Jeu& jeuRef;
     Ecran_LED& ecranRef;
     SONMP3& sonRef;
-    int selectionnerJoueur();
+    Bouton_tactile_I2C boutonRef
 
   public :
     /**
      * @fn Jour();
      * @brief Constructeur par defaut
     */    
-    Jour((Jeu& jeu, Ecran_LED& ecran, SONMP3& son););
+    Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C bouton);
     /**
      * @fn Jour();
      * @brief Destructeur
