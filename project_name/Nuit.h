@@ -1,3 +1,9 @@
+/*********************************************************************
+ * @file  Nuit.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe Nuit qui prévoit le déroulement d'une nuit de jeu
+ *********************************************************************/
+
 #ifndef NUIT_H
 #define NUIT_H
 
@@ -7,6 +13,10 @@
 #include "Actionneurs.h" 
 #include "sonMP3.h" 
 
+/**
+  * @class Nuit 
+  * @brief Nuit 
+*/    
 class Nuit {
   private:
 

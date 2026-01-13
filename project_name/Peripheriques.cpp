@@ -12,7 +12,7 @@ Peripheriques::Peripheriques(){  //Constructeur nul
 }; 
 
 
-Peripheriques::Peripheriques(int p){  //Constructeur 
+Peripheriques::Peripheriques(int p){  //Constructeur avec le în associé au periph 
       pin = p; 
 }; 
 

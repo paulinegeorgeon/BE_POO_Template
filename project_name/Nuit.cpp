@@ -1,14 +1,25 @@
+/*********************************************************************
+ * @file  Nuit.cpp
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe Nuit qui prévoit le déroulement d'une nuit de jeu
+ *********************************************************************/
+
 #include "Nuit.h"
 
-Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s) 
+
+Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s) //constructeur 
 : jeuRef(j), ecranRef(e), sonRef(s)
 {
 }
+
 
 int Nuit::selectionnerJoueur(){
   return 1;
 }
 
+// Fonctions des différents tours au cours de la nuit 
+
+// TOUR DU BARMAN
 void Nuit::tourBarman() {
     ecranRef.Afficher_message("Le Barman", "se reveille");
     delay(2000);
@@ -24,6 +35,7 @@ void Nuit::tourBarman() {
     delay(1000);
 }
 
+//TOUR DU GRATTEUR
 void Nuit::tourGratteur() {
     ecranRef.Afficher_message("Le Gratteur", "se reveille");
     delay(2000);
@@ -39,10 +51,11 @@ void Nuit::tourGratteur() {
         int cible = selectionnerJoueur();
         jeuRef.retirerGorgees(cible);
       }
-     
+
     delay(1000);
 }
 
+//TOUR DE LA CAPOTE DE VERRE
 void Nuit::tourCDV() {
     ecranRef.Afficher_message("La Capote", "se reveille");
     delay(2000);
@@ -60,6 +73,7 @@ void Nuit::tourCDV() {
     delay(1000);
 }
 
+//TOUR DU MALADROIT
 void Nuit::tourMaladroit() {
     ecranRef.Afficher_message("Le Maladroit", "se reveille");
     delay(2000);
@@ -78,6 +92,7 @@ void Nuit::tourMaladroit() {
     delay(1000);
 }
 
+//TOUR ETHYLOTEST
 void Nuit::tourEthylotest() {
     ecranRef.Afficher_message("L'Ethylotest", "se reveille");
     delay(2000);
@@ -101,8 +116,8 @@ void Nuit::tourEthylotest() {
 }
 
 
-// --- LE CHEF D'ORCHESTRE ---
 
+//NUIT ENTIERE
 void Nuit::lancerLaNuit() {
 
     // 0. Reset des stats temporaires a faire 

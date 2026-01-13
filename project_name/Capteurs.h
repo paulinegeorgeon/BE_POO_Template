@@ -33,7 +33,7 @@ class Capteurs : public Peripheriques {
      * @fn getValue()
      * @brief récupère la valeur du capteur 
     */ 
-    virtual int getValue()=0;
+    //virtual int getValue()=0;
 };
 
 #endif

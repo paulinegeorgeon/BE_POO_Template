@@ -58,3 +58,4 @@ void Jeu::immuniserJoueur(int index) {
     
   listeJoueurs[index].setImmunise();
 }
+ 

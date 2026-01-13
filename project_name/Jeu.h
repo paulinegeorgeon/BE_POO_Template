@@ -10,6 +10,7 @@
 #include "Arduino.h"
 #include "string.h"
 #include "Joueur.h"
+#include "Bouton_tactile_I2C.h"
 
 
 class Jeu {
@@ -49,7 +50,5 @@ class Jeu {
   void retirerGorgees(int index);
 
   void immuniserJoueur(int index);
-  
-
 }; 
 #endif

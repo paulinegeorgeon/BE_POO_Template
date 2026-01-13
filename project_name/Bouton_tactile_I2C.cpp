@@ -11,10 +11,22 @@ using namespace std;
 
 i2ctouchsensor touchsensor;
 
+/*
 Bouton_tactile_I2C::Bouton_tactile_I2C(int Num){
   Num_Capteur = Num; 
+}; */
+
+
+Bouton_tactile_I2C::Bouton_tactile_I2C(){
 }; 
 
+
+void Bouton_tactile_I2C::initialiser(){ //initialise tout l'I2C touch sensor 
+  Wire.begin();
+  touchsensor.initialize();   
+};
+
+/*
 int Bouton_tactile_I2C::getValue (){
   touchsensor.readTouchInputs();
   touchsensor.getTouchState();
@@ -28,10 +40,24 @@ int Bouton_tactile_I2C::getValue (){
     //   return (data & (1 << Num_Capteur)? 1 : 0); //retourne la valeur du num_capteur  
     //}
     //else return 0;
-};
+};*/
 
+int Bouton_tactile_I2C::joueurAppuye() {
 
-void Bouton_tactile_I2C::initialiser(){ //initialise tout l'I2C touch sensor 
-  Wire.begin();
-  touchsensor.initialize();   
-};
+    touchsensor.readTouchInputs();
+    touchsensor.getTouchState();
+
+    for (int i = 0; i < 12; i++) {   //parcours les 5 capteurs pour savoir lequel est appuyé 
+
+      if (touchsensor.touched & (1 << i)) {
+        if (i<5){
+          return i + 1;  // retourne le numéro du joueur qui touche le capteur 
+        }
+        else {
+          return i-3; 
+        }
+      }
+    }
+    return 0;  // aucun joueur ne touche le capteur 
+}
+

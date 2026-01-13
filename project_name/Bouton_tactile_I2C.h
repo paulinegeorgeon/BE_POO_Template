@@ -34,19 +34,21 @@ class Bouton_tactile_I2C : public Capteurs{
      * @fn Bouton_tactile(uint8_t num_bouton)
      * @brief constructeur avec le pin associé au bouton tactile
     */ 
-    Bouton_tactile_I2C(int Num);
-
-    /**
-     * @fn getValue()
-     * @brief fonction qui renvoie la valeur du capteur
-    */ 
-    int getValue(); 
-
+    Bouton_tactile_I2C();
+    
     /**
      * @fn intialiser()
      * @brief initialise l'I2C touch sensor besoin de le faire une seule fois pour tous les boutons
     */ 
     void initialiser(); 
+
+    /**
+     * @fn getValue()
+     * @brief fonction qui renvoie la valeur du capteur
+    */ 
+    int joueurAppuye(); 
+
+
 
 }; 
 #endif

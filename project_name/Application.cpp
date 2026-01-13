@@ -13,9 +13,8 @@
 Ecran_LED MonEcran;
 Jeu NouveauJeu;
 SONMP3 MonSon(14,12);
-Nuit MaNuit(NouveauJeu,MonEcran);
-Bouton_tactile_I2C joueur1(0);
-Bouton_tactile_I2C joueur2(1);  
+Nuit MaNuit(NouveauJeu,MonEcran, MonSon);
+Bouton_tactile_I2C bouton;
 
 Application::Application()
 {
@@ -35,7 +34,7 @@ void Application::init(void)
   NouveauJeu.RepartitionRoles();
   MonSon.initialiser();
   MonSon.setVolume(20);
-  joueur1.initialiser(); 
+  bouton.initialiser(); 
 }
 
 
@@ -44,9 +43,9 @@ void Application::run(void)
   //MonSon.playSong(1);
   //MonEcran.Afficher_message("Tout le monde","dort sauf J1!");
   //delay(10000); 
-  MonEcran.Afficher_message("Bouton appuyé? ", String(joueur1.getValue())); 
+  MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
   delay(3000);   
-  MonEcran.Afficher_message("Bouton  ", String(joueur2.getValue())); 
+  MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
   delay(3000); 
   //for (int i = 0; i < 6; i++) {
   //MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
