@@ -7,14 +7,9 @@
 #include "Nuit.h"
 
 
-Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s) //constructeur 
-: jeuRef(j), ecranRef(e), sonRef(s)
+Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b) //constructeur 
+: jeuRef(j), ecranRef(e), sonRef(s), bouton(b)
 {
-}
-
-
-int Nuit::selectionnerJoueur(){
-  return 1;
 }
 
 // Fonctions des différents tours au cours de la nuit 
@@ -26,11 +21,9 @@ void Nuit::tourBarman() {
 
     // rajout fonction MP3
     ecranRef.Afficher_message("Barman", "Qui faire boire?");
-
-    int cible = selectionnerJoueur(); 
-    
+    delay(1000); 
+    int cible = bouton.joueurAppuye(); //mettre un décompte à l'écran 
     jeuRef.ajouterGorgees(cible);
-    
     ecranRef.Afficher_message("C'est fait !", "");
     delay(1000);
 }
@@ -43,12 +36,12 @@ void Nuit::tourGratteur() {
     ecranRef.Afficher_message("Gratteur", "Qui soulager?");
             
       if (cntGratteurs ==2) {
-    int cible = selectionnerJoueur();
-    int cible2 = selectionnerJoueur();
+    int cible = bouton.joueurAppuye();
+    int cible2 = bouton.joueurAppuye();
     jeuRef.retirerGorgees(cible);
     jeuRef.retirerGorgees(cible2);
       } else {
-        int cible = selectionnerJoueur();
+        int cible = bouton.joueurAppuye();
         jeuRef.retirerGorgees(cible);
       }
 
@@ -62,7 +55,7 @@ void Nuit::tourCDV() {
     
     ecranRef.Afficher_message("Capote :", "Qui proteger ?");
     
-    int cible = selectionnerJoueur(); 
+    int cible = bouton.joueurAppuye(); 
     
     jeuRef.immuniserJoueur(cible);
     
@@ -80,7 +73,7 @@ void Nuit::tourMaladroit() {
     
     ecranRef.Afficher_message("Maladroit :", "Qui renverser ?");
     
-    int cible = selectionnerJoueur();
+    int cible = bouton.joueurAppuye();
     
 
     jeuRef.retirerGorgees(cible);
@@ -99,7 +92,7 @@ void Nuit::tourEthylotest() {
     
     ecranRef.Afficher_message("Ethylotest :", "Qui tester ?");
     
-    int cible = selectionnerJoueur();
+    int cible = bouton.joueurAppuye();
     
     Joueur* pJoueur = jeuRef.getJoueur(cible);
     int nbGorgees = pJoueur->getNbGorgees();

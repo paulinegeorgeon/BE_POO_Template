@@ -12,6 +12,7 @@
 #include "Ecran_LED.h"
 #include "Actionneurs.h" 
 #include "sonMP3.h" 
+#include "Bouton_tactile_I2C.h"
 
 /**
   * @class Nuit 
@@ -24,12 +25,7 @@ class Nuit {
     Ecran_LED& ecranRef;
     SONMP3& sonRef;
     int cntGratteurs;
-
-    /**
-     * @brief Fonction interne pour gérer l'interface de choix avec les boutons
-     * @return L'index du joueur choisi (0-5)
-     */
-    int selectionnerJoueur();
+    Bouton_tactile_I2C& bouton; 
 
     // Sous-fonctions pour chaque rôle (pour ne pas avoir un code géant)
     void tourBarman();
@@ -40,7 +36,7 @@ class Nuit {
 
   public:
     // Constructeur qui prend les objets existants
-    Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son);
+    Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
 
     // La fonction principale qui lance toute la séquence
     void lancerLaNuit();

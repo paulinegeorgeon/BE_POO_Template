@@ -13,8 +13,9 @@
 Ecran_LED MonEcran;
 Jeu NouveauJeu;
 SONMP3 MonSon(14,12);
-Nuit MaNuit(NouveauJeu,MonEcran, MonSon);
 Bouton_tactile_I2C bouton;
+Nuit MaNuit(NouveauJeu,MonEcran, MonSon, bouton);
+
 
 Application::Application()
 {
@@ -42,15 +43,14 @@ void Application::run(void)
 {
   //MonSon.playSong(1);
   //MonEcran.Afficher_message("Tout le monde","dort sauf J1!");
-  //delay(10000); 
+  /*
   MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
   delay(3000);   
   MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
-  delay(3000); 
-  //for (int i = 0; i < 6; i++) {
-  //MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
-  //delay(10000);
-  //MaNuit.lancerLaNuit();
-
-   // }
+  delay(3000); */
+  for (int i = 0; i < 6; i++) {
+  MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
+  delay(10000);
+  }
+  MaNuit.lancerLaNuit();
 }
