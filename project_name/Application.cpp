@@ -9,12 +9,14 @@
 #include "Jeu.h"
 #include "sonMP3.h"
 #include "Nuit.h"
+#include "Jour.h"
 
 Ecran_LED MonEcran;
 Jeu NouveauJeu;
 SONMP3 MonSon(14,12);
 Bouton_tactile_I2C bouton;
 Nuit MaNuit(NouveauJeu,MonEcran, MonSon, bouton);
+Jour MonJour(NouveauJeu,MonEcran, MonSon, bouton);
 
 
 Application::Application()
@@ -53,4 +55,7 @@ void Application::run(void)
   delay(1000);
   }
   MaNuit.lancerLaNuit();
+  delay(1000);
+  MonJour.lancerLeJour();
+
 }

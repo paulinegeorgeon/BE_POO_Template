@@ -50,5 +50,6 @@ class Jeu {
   void retirerGorgees(int index);
 
   void immuniserJoueur(int index);
+
 }; 
 #endif

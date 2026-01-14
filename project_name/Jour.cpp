@@ -6,24 +6,27 @@ Jour::Jour(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b)
 {
 }
 
+
 void Jour::EstMort(){
     for (int i = 0; i < 6; i++) {
-        Joueur* p = jeuRef.getJoueur(i+1);
+        Joueur* p = jeuRef.getJoueur(i);
 
         if (p != nullptr) {
             if (!p->getEstMort() && p->getNbGorgees() <= 0) {
                 p->setEstMort(true);
 
-        String ligne1 = "Joueur " + String(i + 1) ;
-        String ligne2 = "est mort";
-        ecranRef.Afficher_message(ligne1, ligne2);
+                String ligne1 = "Joueur " + String(i + 1) ;
+                String ligne2 = "est mort";
+                ecranRef.Afficher_message(ligne1, ligne2);
+            }
+        }
     }
     
 }
 
 void Jour::RecapGorgees(){
     for (int i = 0; i < 6; i++) {
-        Joueur* p = jeuRef.getJoueur(i+1);
+        Joueur* p = jeuRef.getJoueur(i);
 
         String ligne1 = "Joueur " + String(i + 1) ;
         String ligne2 = String(p->getNbGorgees()) + " gorgees";
@@ -50,18 +53,21 @@ void Jour::QuiGagne(){
     if (vivantsGratteurs == 0) {
         String ligne1 = "Les Villageois" ;
         String ligne2 = "gagnent";
+        delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
-        return 1; // Code pour victoire villageois
+        delay(10000);
+        ecranRef.eteindre();
     }
 
     if (vivantsGratteurs >= vivantsVillageois) {
         String ligne1 = "Les Gratteurs" ;
         String ligne2 = "gagnent";
+        delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
-        return 2; // Code pour victoire gratteurs
+        delay(10000);
+        ecranRef.eteindre();
     }
 
-    return 0;
 }
 
 void Jour::lancerLeJour() {
@@ -76,6 +82,8 @@ void Jour::lancerLeJour() {
     delay(2000);
 
     EstMort();
+
+    QuiGagne();
 
     //peut-être afficher qui est mort
     sonRef.playSong(3);
@@ -100,6 +108,8 @@ void Jour::lancerLeJour() {
 
     RecapGorgees();
     EstMort();
+
+    QuiGagne();
 
     //faire audio "retour à la nuit"
     ecranRef.Afficher_message("Fin du tour", "La nuit revient");

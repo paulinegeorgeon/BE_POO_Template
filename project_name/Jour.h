@@ -41,10 +41,6 @@ class Jour
     */    
     Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
     /**
-     * @fn Jour();
-     * @brief Destructeur
-    */    
-    ~Jour();    
     /**
      * @fn lancerLeJour();
      * @brief Partie du jour
