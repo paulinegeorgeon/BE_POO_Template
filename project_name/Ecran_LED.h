@@ -1,21 +1,17 @@
-#include <Arduino.h> 
-#include "string.h"
-#include "math.h"
-
 /*********************************************************************
  * @file  Ecran_LED.h
- * @author Emma/Raksika/Pauline
+ * @author CALVO - YOGALINGAM - GEORGEON
  * @brief Fichier Ecran_LED hérite de Actionneurs
  *********************************************************************/
- 
+
+#include <Arduino.h> 
+#include "string.h"
+
 #ifndef ECRAN_LED_H
 #define ECRAN_LED_H
 
-
 #include <rgb_lcd.h>
 #include "Actionneurs.h"
-using namespace std;
-
 
 /**
   * @class Ecran_LED
@@ -26,7 +22,11 @@ class Ecran_LED : public Actionneurs
 {
   protected : 
 
-    rgb_lcd lcd; // Objet interne pour piloter le matériel 
+    /**
+     * @fn rgb_lcd lcd;
+     * @brief Objet interne pour piloter le matériel  
+    */ 
+    rgb_lcd lcd;
 
   public : 
     /**
@@ -47,11 +47,16 @@ class Ecran_LED : public Actionneurs
     */   
     void Afficher_message(String ligne1, String ligne2); 
 
-        /**
+    /**
      * @fn void eteindre()
      * @brief Fonction d'extinction de l'actionneur
     */
     void eteindre();
+
+    /**
+     * @fn void eteindre()
+     * @brief Fonction d'initialisation de l'écran LCD
+    */
     void initialiser();
 };
 #endif

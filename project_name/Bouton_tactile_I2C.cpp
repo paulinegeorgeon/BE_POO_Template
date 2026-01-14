@@ -4,20 +4,11 @@
  * @brief Fichier classe bouton tactile I2C qui hérite de capteurs
  *********************************************************************/
 
-#include <Arduino.h>
 #include "Bouton_tactile_I2C.h"
-
-using namespace std;
 
 i2ctouchsensor touchsensor;
 
-/*
-Bouton_tactile_I2C::Bouton_tactile_I2C(int Num){
-  Num_Capteur = Num; 
-}; */
-
-
-Bouton_tactile_I2C::Bouton_tactile_I2C(){
+Bouton_tactile_I2C::Bouton_tactile_I2C(){ ///constructeur
 }; 
 
 

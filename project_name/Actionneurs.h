@@ -1,27 +1,18 @@
-#include <iostream> 
-#include "string.h"
-#include "math.h"
-using namespace std;
-
-
 /*********************************************************************
  * @file  Actionneurs.h
- * @author Emma/Raksika/Pauline
+ * @author CALVO - YOGALINGAM - GEORGEON
  * @brief Fichier Actionneurs hérite de Périphériques
  *********************************************************************/
-
 
 #ifndef ACTIONNEURS_H_
 #define ACTIONNEURS_H_
 
 #include "Peripheriques.h"
+
 /**
   * @class Actionneurs
   * @brief Classe Actionneurs
 */  
-
-
-
 class Actionneurs : public Peripheriques
 {
   protected : 

@@ -1,13 +1,17 @@
+/*********************************************************************
+ * @file  Ecran_LED.cpp
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier Ecran_LED hérite de Actionneurs
+ *********************************************************************/
 
 #include "Ecran_LED.h"
-#include "Actionneurs.h"
 
-Ecran_LED::Ecran_LED():Actionneurs(0) 
+Ecran_LED::Ecran_LED():Actionneurs(0) //constructeur null
 {
     ;
 };
 
-Ecran_LED::~Ecran_LED()
+Ecran_LED::~Ecran_LED() //destructeur
 {
     ;
 }

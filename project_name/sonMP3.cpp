@@ -1,6 +1,12 @@
+/*********************************************************************
+ * @file  sonMP3.cpp
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier sonMP3 hérite de Actionneurs
+ *********************************************************************/
+ 
 #include "sonMP3.h"
 
-SONMP3::SONMP3(uint8_t rx, uint8_t tx) : Actionneurs(rx){
+SONMP3::SONMP3(uint8_t rx, uint8_t tx) : Actionneurs(rx){ //constructeur 
   _rxPin = rx;
   _txPin = tx;
   _serial = new SoftwareSerial(_rxPin, _txPin);

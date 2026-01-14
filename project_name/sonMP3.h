@@ -1,18 +1,15 @@
 /*********************************************************************
  * @file  sonMP3.h
- * @author Emma/Raksika/Pauline
+ * @author CALVO - YOGALINGAM - GEORGEON
  * @brief Fichier sonMP3 hérite de Actionneurs
  *********************************************************************/
  
 #ifndef SONMP3_H
 #define SONMP3_H
 
-
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include "Actionneurs.h"
-using namespace std;
-
 
 /**
   * @class SONMP3
@@ -22,24 +19,67 @@ using namespace std;
 class SONMP3 : public Actionneurs
 {
   protected : 
-
+    /**
+     * @fn SoftwareSerial* _serial
+     * @brief variable qui sert à instancier les pins 
+    */ 
     SoftwareSerial* _serial;
+
+    /**
+     * @fn uint8_t _rxPin
+     * @brief pin de RX
+    */ 
     uint8_t _rxPin;
+
+    /**
+     * @fn uint8_t _txPin
+     * @brief pin de TX
+    */ 
     uint8_t _txPin;
+
+    /**
+     * @fn void sendCmd(uint8_t cmd, uint16_t dat)
+     * @brief écrit le numéro des pistes audios
+    */ 
     void sendCmd(uint8_t cmd, uint16_t dat); 
 
-
   public : 
-    // Constructeur : on définit les pins ici
+    /**
+     * @fn SONMP3(uint8_t rx, uint8_t tx)
+     * @brief Constructeur : on définit les pins ici
+    */ 
     SONMP3(uint8_t rx, uint8_t tx);
     
-    // Destructeur
+    /**
+     * @fn ~SONMP3()
+     * @brief Destructeur
+    */ 
     ~SONMP3();
 
     // Méthodes de base
+
+     /**
+     * @fn void initialiser()
+     * @brief initialisation de l'actionneur MP3
+    */ 
     void initialiser();
+
+    /**
+     * @fn void playSong(uint8_t file)
+     * @brief joue l'audio file 
+    */ 
     void playSong(uint8_t file);
+
+    /**
+     * @fn setVolume(uint8_t volume)
+     * @brief règle le volume entre 0 et 100
+    */    
     void setVolume(uint8_t volume);
+
+    /**
+     * @fn eteindre()
+     * @brief coupe l'audio 
+    */    
     void eteindre();
 
 };
