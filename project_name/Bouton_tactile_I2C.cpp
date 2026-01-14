@@ -58,6 +58,6 @@ int Bouton_tactile_I2C::joueurAppuye() {
         }
       }
     }
-    return 0;  // aucun joueur ne touche le capteur 
+    return -1;  // aucun joueur ne touche le capteur 
 }
 

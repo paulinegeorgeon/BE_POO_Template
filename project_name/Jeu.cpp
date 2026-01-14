@@ -50,8 +50,9 @@ void Jeu::ajouterGorgees(int indexcible){
 }
 
 void Jeu::retirerGorgees(int indexcible){
-    
+    if (!(listeJoueurs[indexcible].getImmunise())){
     listeJoueurs[indexcible].setNbGorgees(listeJoueurs[indexcible].getNbGorgees()-1);
+    }
 }
 
 void Jeu::immuniserJoueur(int index) {

@@ -50,7 +50,7 @@ void Application::run(void)
   delay(3000); */
   for (int i = 0; i < 6; i++) {
   MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
-  delay(10000);
+  delay(1000);
   }
   MaNuit.lancerLaNuit();
 }

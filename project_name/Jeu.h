@@ -18,8 +18,8 @@ class Jeu {
   String rolesDisponibles[6] = {
         "Maladroit", 
         "Barman", 
-        "Gratteur Verre 1", 
-        "Gratteur Verre 2",
+        "Gratteur Verre", 
+        "Gratteur Verre",
         "Capote de Verre", 
         "Ethylotest"
     };

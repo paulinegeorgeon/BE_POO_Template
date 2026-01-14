@@ -18,81 +18,101 @@ Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b) //constructeu
 void Nuit::tourBarman() {
     ecranRef.Afficher_message("Le Barman", "se reveille");
     delay(2000);
-
-    // rajout fonction MP3
     ecranRef.Afficher_message("Barman", "Qui faire boire?");
     delay(1000); 
-    int cible = bouton.joueurAppuye(); //mettre un décompte à l'écran 
+
+    //attente que le barman appuie sur un bouton
+    int cible = -1; 
+    while (cible==-1){
+      cible = bouton.joueurAppuye(); 
+      delay(50); 
+    }
+
     jeuRef.ajouterGorgees(cible);
+    delay(2000);
     ecranRef.Afficher_message("C'est fait !", "");
-    delay(1000);
+    delay(3000);
 }
 
 //TOUR DU GRATTEUR
 void Nuit::tourGratteur() {
+
     ecranRef.Afficher_message("Le Gratteur", "se reveille");
     delay(2000);
-    
-    ecranRef.Afficher_message("Gratteur", "Qui soulager?");
-            
-      if (cntGratteurs ==2) {
-    int cible = bouton.joueurAppuye();
-    int cible2 = bouton.joueurAppuye();
-    jeuRef.retirerGorgees(cible);
-    jeuRef.retirerGorgees(cible2);
-      } else {
-        int cible = bouton.joueurAppuye();
-        jeuRef.retirerGorgees(cible);
-      }
+    ecranRef.Afficher_message("Gratteur(s)", "Qui soulager?");  
 
-    delay(1000);
+    //attente que le gratteur appuie sur un bouton
+    int cible = -1; 
+    while (cible==-1){
+      cible = bouton.joueurAppuye(); 
+      delay(50); 
+    }
+
+    jeuRef.retirerGorgees(cible);
+    jeuRef.retirerGorgees(cible);
+    delay(2000);
+    ecranRef.Afficher_message("C'est fait !", "");
+    delay(3000);
 }
 
 //TOUR DE LA CAPOTE DE VERRE
 void Nuit::tourCDV() {
     ecranRef.Afficher_message("La Capote", "se reveille");
     delay(2000);
-    
     ecranRef.Afficher_message("Capote :", "Qui proteger ?");
     
-    int cible = bouton.joueurAppuye(); 
-    
+    //attente que la capote appuie sur un bouton
+    int cible = -1; 
+    while (cible==-1){
+      cible = bouton.joueurAppuye(); 
+      delay(50); 
+    }
+
     jeuRef.immuniserJoueur(cible);
     
-    ecranRef.Afficher_message("Joueur " + String(cible + 1), "est protege !");
+    delay(2000);
+    ecranRef.Afficher_message("Joueur " + String(cible), "est protege !");
     delay(2000);
     
     ecranRef.Afficher_message("La Capote", "se rendort");
-    delay(1000);
+    delay(3000);
 }
 
 //TOUR DU MALADROIT
 void Nuit::tourMaladroit() {
     ecranRef.Afficher_message("Le Maladroit", "se reveille");
     delay(2000);
-    
     ecranRef.Afficher_message("Maladroit :", "Qui renverser ?");
     
-    int cible = bouton.joueurAppuye();
-    
+    //attente que le maladroit appuie sur un bouton
+    int cible = -1; 
+    while (cible==-1){
+      cible = bouton.joueurAppuye(); 
+      delay(50); 
+    }
 
     jeuRef.retirerGorgees(cible);
-    
+
+    delay(2000);    
     ecranRef.Afficher_message("Oups ! Verre", "renverse...");
     delay(2000);
     
     ecranRef.Afficher_message("Le Maladroit", "se rendort");
-    delay(1000);
+    delay(3000);
 }
 
 //TOUR ETHYLOTEST
 void Nuit::tourEthylotest() {
     ecranRef.Afficher_message("L'Ethylotest", "se reveille");
     delay(2000);
-    
     ecranRef.Afficher_message("Ethylotest :", "Qui tester ?");
     
-    int cible = bouton.joueurAppuye();
+    //attente que le maladroit appuie sur un bouton
+    int cible = -1; 
+    while (cible==-1){
+      cible = bouton.joueurAppuye(); 
+      delay(50); 
+    }
     
     Joueur* pJoueur = jeuRef.getJoueur(cible);
     int nbGorgees = pJoueur->getNbGorgees();
