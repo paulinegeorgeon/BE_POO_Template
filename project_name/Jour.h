@@ -12,6 +12,7 @@
 #include "Jeu.h"
 #include "Ecran_LED.h"
 #include "sonMP3.h"
+#include "Bouton_tactile_I2C.h"
 
 using namespace std;
 
@@ -27,14 +28,14 @@ class Jour
     Jeu& jeuRef;
     Ecran_LED& ecranRef;
     SONMP3& sonRef;
-    Bouton_tactile_I2C boutonRef
+    Bouton_tactile_I2C bouton;
 
   public :
     /**
      * @fn Jour();
      * @brief Constructeur par defaut
     */    
-    Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C bouton);
+    Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
     /**
      * @fn Jour();
      * @brief Destructeur
