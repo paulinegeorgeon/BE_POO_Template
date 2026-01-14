@@ -30,6 +30,10 @@ class Jour
     SONMP3& sonRef;
     Bouton_tactile_I2C bouton;
 
+    void EstMort();
+    void RecapGorgees();
+    void QuiGagne();
+
   public :
     /**
      * @fn Jour();

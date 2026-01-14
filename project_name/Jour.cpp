@@ -6,6 +6,64 @@ Jour::Jour(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b)
 {
 }
 
+void Jour::EstMort(){
+    for (int i = 0; i < 6; i++) {
+        Joueur* p = jeuRef.getJoueur(i+1);
+
+        if (p != nullptr) {
+            if (!p->getEstMort() && p->getNbGorgees() <= 0) {
+                p->setEstMort(true);
+
+        String ligne1 = "Joueur " + String(i + 1) ;
+        String ligne2 = "est mort";
+        ecranRef.Afficher_message(ligne1, ligne2);
+    }
+    
+}
+
+void Jour::RecapGorgees(){
+    for (int i = 0; i < 6; i++) {
+        Joueur* p = jeuRef.getJoueur(i+1);
+
+        String ligne1 = "Joueur " + String(i + 1) ;
+        String ligne2 = String(p->getNbGorgees()) + " gorgees";
+        ecranRef.Afficher_message(ligne1, ligne2);
+        delay(3000); // 3 secondes pour lire par joueur
+    }
+}
+
+void Jour::QuiGagne(){
+    int vivantsVillageois = 0;
+    int vivantsGratteurs = 0;
+
+    for (int i = 0; i < 6; i++) {
+        Joueur* j = jeuRef.getJoueur(i);
+        if (j != nullptr && !j->getEstMort()) {
+            if (j->getRole() == "Gratteur de verre") {
+                vivantsGratteurs++;
+            } else {
+                vivantsVillageois++;
+            }
+        }
+    }
+
+    if (vivantsGratteurs == 0) {
+        String ligne1 = "Les Villageois" ;
+        String ligne2 = "gagnent";
+        ecranRef.Afficher_message(ligne1, ligne2);
+        return 1; // Code pour victoire villageois
+    }
+
+    if (vivantsGratteurs >= vivantsVillageois) {
+        String ligne1 = "Les Gratteurs" ;
+        String ligne2 = "gagnent";
+        ecranRef.Afficher_message(ligne1, ligne2);
+        return 2; // Code pour victoire gratteurs
+    }
+
+    return 0;
+}
+
 void Jour::lancerLeJour() {
     ecranRef.Afficher_message("Le soleil", "se leve...");
     sonRef.playSong(1);
@@ -14,18 +72,10 @@ void Jour::lancerLeJour() {
 
     ecranRef.Afficher_message("Recapitulatif", "des scores...");
     sonRef.playSong(2);
-
+    RecapGorgees();
     delay(2000);
 
-    for (int i = 0; i < 6; i++) {
-        Joueur* p = jeuRef.getJoueur(i);
-
-        String ligne1 = "Joueur " + String(i + 1) ;
-        String ligne2 = String(p->getNbGorgees()) + " gorgees";
-        ecranRef.Afficher_message(ligne1, ligne2);
-        delay(3000); // 3 secondes pour lire par joueur
-    }
-     
+    EstMort();
 
     //peut-être afficher qui est mort
     sonRef.playSong(3);
@@ -48,14 +98,8 @@ void Jour::lancerLeJour() {
     ecranRef.Afficher_message("Recapitulatif", "des scores...");
     delay(2000);
 
-    for (int i = 0; i < 6; i++) {
-        Joueur* p = jeuRef.getJoueur(i);
-
-        String ligne1 = "Joueur " + String(i) ;
-        String ligne2 = String(p->getNbGorgees()) + " gorgees";
-        ecranRef.Afficher_message(ligne1, ligne2);
-        delay(3000); // 3 secondes pour lire par joueur
-    }
+    RecapGorgees();
+    EstMort();
 
     //faire audio "retour à la nuit"
     ecranRef.Afficher_message("Fin du tour", "La nuit revient");
