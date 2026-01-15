@@ -83,6 +83,12 @@ class Nuit {
   */  
   void tourProtege();
 
+  /**
+    * @fn  void initNuit();
+    * @brief fonction qui initialise la nuit (à faire à chaque tour)
+  */  
+  void initNuit();
+
   public:
 
   /**

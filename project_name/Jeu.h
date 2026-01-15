@@ -78,7 +78,7 @@ class Jeu {
     * @fn void immuniserJoueur(int index);
     * @brief Immunise le joueur n°index
   */   
-  void immuniserJoueur(int index);
+  void immuniserJoueur(int index, bool EstImm);
 
 }; 
 #endif

@@ -11,6 +11,12 @@ Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b) //constructeu
 {
 }
 
+void Nuit::initNuit(){
+  for (int i=0; i<6; i++){
+    jeuRef.immuniserJoueur(i,false); 
+  }
+}
+
 // Fonctions des différents tours au cours de la nuit 
 
 // TOUR DU BARMAN
@@ -66,7 +72,7 @@ void Nuit::tourProtege() {
     delay(50); 
   }
 
-  jeuRef.immuniserJoueur(cible);
+  jeuRef.immuniserJoueur(cible, true);
   
   delay(2000);
   ecranRef.Afficher_message("Joueur " + String(cible), "est protege !");
@@ -131,6 +137,7 @@ void Nuit::tourEthylotest() {
 void Nuit::lancerLaNuit() {
 
     // Initialisaiton de la nuit
+    initNuit(); 
     ecranRef.Afficher_message("La Nuit", "Tombe...");
     sonRef.playSong(1);
     delay(2000);
