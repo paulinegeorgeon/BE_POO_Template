@@ -10,6 +10,15 @@ Jour::~Jour() {
 
 };
 
+bool Jour::getPartieFinie() {
+    return PartieFinie;
+}
+
+void Jour::setPartieFinie(bool Resu){
+    PartieFinie = Resu;
+}
+
+
 void Jour::EstMort(){
     for (int i = 0; i < 6; i++) {
         Joueur* p = jeuRef.getJoueur(i);
@@ -58,6 +67,7 @@ int Jour::QuiGagne(){
         String ligne2 = "gagnent";
         ecranRef.Afficher_message(ligne1, ligne2);
         return 1; // Code pour victoire villageois
+        PartieFinie = true;
     }
 
     if (vivantsGratteurs >= vivantsVillageois) {
@@ -65,6 +75,7 @@ int Jour::QuiGagne(){
         String ligne2 = "gagnent";
         ecranRef.Afficher_message(ligne1, ligne2);
         return 2; // Code pour victoire gratteurs
+        PartieFinie = true; 
     }
 
     return 0;
@@ -110,6 +121,7 @@ void Jour::lancerLeJour() {
 
     RecapGorgees();
     EstMort();
+    QuiGagne();
 
     //faire audio "retour à la nuit"
     ecranRef.Afficher_message("Fin du tour", "La nuit revient");
