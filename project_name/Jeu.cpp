@@ -63,4 +63,14 @@ void Jeu::retirerGorgees(int indexcible){
 void Jeu::immuniserJoueur(int index, bool EstImm) {
   listeJoueurs[index].setImmunise(EstImm);
 }
+
+int Jeu::getRole(String role){
+  for (int i=0; i<6; i++){
+    if (listeJoueurs[i].getRole() == role){
+      return i; 
+    }
+  }
+  return -1; 
+}
+
  

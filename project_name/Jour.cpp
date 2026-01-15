@@ -60,7 +60,7 @@ int Jour::QuiGagne(){
     for (int i = 0; i < 6; i++) {
         Joueur* j = jeuRef.getJoueur(i);
         if (j != nullptr && !j->getEstMort()) {
-            if (j->getRole() == "Gratteur Verre") {
+            if (j->getRole() == "Gratteur Verre 1" or j->getRole() == "Gratteur Verre 2") {
                 vivantsGratteurs++;
             } else {
                 vivantsVillageois++;

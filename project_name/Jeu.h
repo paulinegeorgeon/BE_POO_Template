@@ -25,8 +25,8 @@ class Jeu {
   String rolesDisponibles[6] = {
         "Maladroit", 
         "Barman", 
-        "Gratteur Verre", 
-        "Gratteur Verre",
+        "Gratteur Verre 1", 
+        "Gratteur Verre 2",
         "Protège Verre", 
         "Ethylotest"
     };
@@ -79,6 +79,12 @@ class Jeu {
     * @brief Immunise le joueur n°index
   */   
   void immuniserJoueur(int index, bool EstImm);
+
+  /**
+    * @fn   int getRole(String role);
+    * @brief Retourne le numéro du joueur qui a le role donné en argument 
+  */   
+  int getRole(String role); 
 
 }; 
 #endif
