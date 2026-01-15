@@ -6,126 +6,129 @@
 
 #include "Nuit.h"
 
-
 Nuit::Nuit(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b) //constructeur 
 : jeuRef(j), ecranRef(e), sonRef(s), bouton(b)
 {
+}
+
+void Nuit::initNuit(){
+  for (int i=0; i<6; i++){
+    jeuRef.immuniserJoueur(i,false); 
+  }
 }
 
 // Fonctions des différents tours au cours de la nuit 
 
 // TOUR DU BARMAN
 void Nuit::tourBarman() {
-    ecranRef.Afficher_message("Le Barman", "se reveille");
-    delay(2000);
-    ecranRef.Afficher_message("Barman", "Qui faire boire?");
-    delay(1000); 
+  ecranRef.Afficher_message("Le Barman", "se reveille");
+  delay(2000);
+  ecranRef.Afficher_message("Barman", "Qui faire boire?");
+  delay(1000); 
 
-    //attente que le barman appuie sur un bouton
-    int cible = -1; 
-    while (cible==-1){
-      cible = bouton.joueurAppuye(); 
-      delay(50); 
-    }
+  //attente que le barman appuie sur un bouton
+  int cible = -1; 
+  while (cible==-1){
+    cible = bouton.joueurAppuye(); 
+    delay(50); 
+  }
 
-    jeuRef.ajouterGorgees(cible);
-    delay(2000);
-    ecranRef.Afficher_message("C'est fait !", "");
-    delay(3000);
+  jeuRef.ajouterGorgees(cible);
+  delay(2000);
+  ecranRef.Afficher_message("C'est fait !", "");
+  delay(3000);
 }
 
 //TOUR DU GRATTEUR
 void Nuit::tourGratteur() {
+  ecranRef.Afficher_message("Le Gratteur", "se reveille");
+  delay(2000);
+  ecranRef.Afficher_message("Gratteur(s)", "Qui soulager?");  
 
-    ecranRef.Afficher_message("Le Gratteur", "se reveille");
-    delay(2000);
-    ecranRef.Afficher_message("Gratteur(s)", "Qui soulager?");  
+  //attente que le gratteur appuie sur un bouton
+  int cible = -1; 
+  while (cible==-1){
+    cible = bouton.joueurAppuye(); 
+    delay(50); 
+  }
 
-    //attente que le gratteur appuie sur un bouton
-    int cible = -1; 
-    while (cible==-1){
-      cible = bouton.joueurAppuye(); 
-      delay(50); 
-    }
-
-    jeuRef.retirerGorgees(cible);
-    jeuRef.retirerGorgees(cible);
-    delay(2000);
-    ecranRef.Afficher_message("C'est fait !", "");
-    delay(3000);
+  jeuRef.retirerGorgees(cible);
+  jeuRef.retirerGorgees(cible);
+  delay(2000);
+  ecranRef.Afficher_message("C'est fait !", "");
+  delay(3000);
 }
 
-//TOUR DE LA CAPOTE DE VERRE
-void Nuit::tourCDV() {
-    ecranRef.Afficher_message("La Capote", "se reveille");
-    delay(2000);
-    ecranRef.Afficher_message("Capote :", "Qui proteger ?");
-    
-    //attente que la capote appuie sur un bouton
-    int cible = -1; 
-    while (cible==-1){
-      cible = bouton.joueurAppuye(); 
-      delay(50); 
-    }
+//TOUR DU PROTEGE VERRRE
+void Nuit::tourProtege() {
+  ecranRef.Afficher_message("Le Protecteur", "se reveille");
+  delay(2000);
+  ecranRef.Afficher_message("Protecteur :", "Qui proteger ?");
+  
+  //attente que la capote appuie sur un bouton
+  int cible = -1; 
+  while (cible==-1){
+    cible = bouton.joueurAppuye(); 
+    delay(50); 
+  }
 
-    jeuRef.immuniserJoueur(cible);
-    
-    delay(2000);
-    ecranRef.Afficher_message("Joueur " + String(cible), "est protege !");
-    delay(2000);
-    
-    ecranRef.Afficher_message("La Capote", "se rendort");
-    delay(3000);
+  jeuRef.immuniserJoueur(cible, true);
+  
+  delay(2000);
+  ecranRef.Afficher_message("Joueur " + String(cible), "est protege !");
+  delay(2000);
+  
+  ecranRef.Afficher_message("Le Protecteur", "se rendort");
+  delay(3000);
 }
 
 //TOUR DU MALADROIT
 void Nuit::tourMaladroit() {
-    ecranRef.Afficher_message("Le Maladroit", "se reveille");
-    delay(2000);
-    ecranRef.Afficher_message("Maladroit :", "Qui renverser ?");
-    
-    //attente que le maladroit appuie sur un bouton
-    int cible = -1; 
-    while (cible==-1){
-      cible = bouton.joueurAppuye(); 
-      delay(50); 
-    }
+  ecranRef.Afficher_message("Le Maladroit", "se reveille");
+  delay(2000);
+  ecranRef.Afficher_message("Maladroit :", "Qui renverser ?");
+  
+  //attente que le maladroit appuie sur un bouton
+  int cible = -1; 
+  while (cible==-1){
+    cible = bouton.joueurAppuye(); 
+    delay(50); 
+  }
 
-    jeuRef.retirerGorgees(cible);
+  jeuRef.retirerGorgees(cible);
 
-    delay(2000);    
-    ecranRef.Afficher_message("Oups ! Verre", "renverse...");
-    delay(2000);
-    
-    ecranRef.Afficher_message("Le Maladroit", "se rendort");
-    delay(3000);
+  delay(2000);    
+  ecranRef.Afficher_message("Oups ! Verre", "renverse...");
+  delay(2000);
+  
+  ecranRef.Afficher_message("Le Maladroit", "se rendort");
+  delay(3000);
 }
 
 //TOUR ETHYLOTEST
 void Nuit::tourEthylotest() {
-    ecranRef.Afficher_message("L'Ethylotest", "se reveille");
-    delay(2000);
-    ecranRef.Afficher_message("Ethylotest :", "Qui tester ?");
-    
-    //attente que le maladroit appuie sur un bouton
-    int cible = -1; 
-    while (cible==-1){
-      cible = bouton.joueurAppuye(); 
-      delay(50); 
-    }
-    
-    Joueur* pJoueur = jeuRef.getJoueur(cible);
-    int nbGorgees = pJoueur->getNbGorgees();
-    
-    ecranRef.Afficher_message("Resultat :", String(nbGorgees) + " gorgees");
-    
-    delay(4000);
-    
-    ecranRef.Afficher_message("Analyse", "terminee");
-    delay(1000);
-    
-    ecranRef.Afficher_message("L'Ethylotest", "se rendort");
-    delay(1000);
+  ecranRef.Afficher_message("L'Ethylotest", "se reveille");
+  delay(2000);
+  ecranRef.Afficher_message("Ethylotest :", "Qui tester ?");
+  
+  //attente que le maladroit appuie sur un bouton
+  int cible = -1; 
+  while (cible==-1){
+    cible = bouton.joueurAppuye(); 
+    delay(50); 
+  }
+  
+  Joueur* pJoueur = jeuRef.getJoueur(cible);
+  int nbGorgees = pJoueur->getNbGorgees();
+  
+  ecranRef.Afficher_message("Resultat :", String(nbGorgees) + " gorgees");
+  delay(4000);
+  
+  ecranRef.Afficher_message("Analyse", "terminee");
+  delay(1000);
+  
+  ecranRef.Afficher_message("L'Ethylotest", "se rendort");
+  delay(1000);
 }
 
 
@@ -133,16 +136,16 @@ void Nuit::tourEthylotest() {
 //NUIT ENTIERE
 void Nuit::lancerLaNuit() {
 
-    // 0. Reset des stats temporaires a faire 
-    //jeuRef.resetTour();
+    // Initialisaiton de la nuit
+    initNuit(); 
     ecranRef.Afficher_message("La Nuit", "Tombe...");
     sonRef.playSong(1);
     delay(2000);
 
-    // 1. Scénario
+    // Déroulement de la nuit
     tourBarman();
     delay(2000);
-    tourCDV();
+    tourProtege();
     delay(2000);
     tourGratteur();
     delay(2000);
@@ -150,7 +153,8 @@ void Nuit::lancerLaNuit() {
     delay(2000);
     tourMaladroit();
     delay(2000);
-    // Fin
+
+    // Fin de la nuit
     ecranRef.Afficher_message("Le Village", "Se reveille !");
     delay(2000);
 }

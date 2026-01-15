@@ -3,7 +3,19 @@
 
 Jour::Jour(Jeu& j, Ecran_LED& e, SONMP3& s, Bouton_tactile_I2C& b) 
 : jeuRef(j), ecranRef(e), sonRef(s), bouton(b)
-{
+{  
+}
+
+Jour::~Jour() {
+
+};
+
+bool Jour::getPartieFinie() {
+    return PartieFinie;
+}
+
+void Jour::setPartieFinie(bool Resu){
+    PartieFinie = Resu;
 }
 
 
@@ -12,30 +24,36 @@ void Jour::EstMort(){
         Joueur* p = jeuRef.getJoueur(i);
 
         if (p != nullptr) {
-            if (!p->getEstMort() && p->getNbGorgees() <= 0) {
+            if (!p->getEstMort() && p->getNbGorgees() <= 0) 
+            {
                 p->setEstMort(true);
+
+
+            String ligne1 = "Joueur " + String(i + 1) ;
+            String ligne2 = "est mort";
+            ecranRef.Afficher_message(ligne1, ligne2);
 
                 String ligne1 = "Joueur " + String(i + 1) ;
                 String ligne2 = "est mort";
                 ecranRef.Afficher_message(ligne1, ligne2);
+
             }
         }
     }
-    
 }
 
 void Jour::RecapGorgees(){
     for (int i = 0; i < 6; i++) {
         Joueur* p = jeuRef.getJoueur(i);
 
-        String ligne1 = "Joueur " + String(i + 1) ;
+        String ligne1 = "Joueur " + String(i+1) ;
         String ligne2 = String(p->getNbGorgees()) + " gorgees";
         ecranRef.Afficher_message(ligne1, ligne2);
         delay(3000); // 3 secondes pour lire par joueur
     }
 }
 
-void Jour::QuiGagne(){
+int Jour::QuiGagne(){
     int vivantsVillageois = 0;
     int vivantsGratteurs = 0;
 
@@ -55,8 +73,13 @@ void Jour::QuiGagne(){
         String ligne2 = "gagnent";
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
+
+        return 1; // Code pour victoire villageois
+        PartieFinie = true;
+
         delay(10000);
         ecranRef.eteindre();
+
     }
 
     if (vivantsGratteurs >= vivantsVillageois) {
@@ -64,8 +87,13 @@ void Jour::QuiGagne(){
         String ligne2 = "gagnent";
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
+
+        return 2; // Code pour victoire gratteurs
+        PartieFinie = true; 
+
         delay(10000);
         ecranRef.eteindre();
+
     }
 
 }
@@ -93,10 +121,14 @@ void Jour::lancerLeJour() {
     delay(10000);
     sonRef.playSong(4);
 
-    int elu = bouton.joueurAppuye();
+    int elu = -1; 
+    while (elu==-1){
+      elu = bouton.joueurAppuye(); 
+      delay(50); 
+    }
 
-    jeuRef.retirerGorgees(elu); 
-    jeuRef.retirerGorgees(elu); 
+    jeuRef.retirerGorgees(elu-1); 
+    jeuRef.retirerGorgees(elu-1); 
     
     sonRef.playSong(5);
     ecranRef.Afficher_message("Le joueur " + String(elu), "perd 2 gorgees");
@@ -108,6 +140,7 @@ void Jour::lancerLeJour() {
 
     RecapGorgees();
     EstMort();
+    QuiGagne();
 
     QuiGagne();
 

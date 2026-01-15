@@ -21,25 +21,87 @@
 class Nuit {
   private:
 
-    Jeu& jeuRef;
-    Ecran_LED& ecranRef;
-    SONMP3& sonRef;
-    int cntGratteurs;
-    Bouton_tactile_I2C& bouton; 
+  /**
+    * @fn Jeu& jeuRef;
+    * @brief récupère un jeu
+  */   
+  Jeu& jeuRef;
 
-    // Sous-fonctions pour chaque rôle (pour ne pas avoir un code géant)
-    void tourBarman();
-    void tourGratteur();
-    void tourEthylotest();
-    void tourMaladroit();
-    void tourCDV();
+  /**
+    * @fn  Ecran_LED& ecranRef;
+    * @brief récupère un écran
+  */   
+  Ecran_LED& ecranRef;
+
+  /**
+    * @fn  SONMP3& sonRef;
+    * @brief récupère un son
+  */    
+  SONMP3& sonRef;
+
+  /**
+    * @fn  int cntGratteurs;
+    * @brief Nombre de gratteur
+  */      
+  int cntGratteurs;
+
+  /**
+    * @fn  Bouton_tactile_I2C& bouton;
+    * @brief récupère un bouton
+  */      
+  Bouton_tactile_I2C& bouton; 
+
+  // Sous-fonctions pour chaque rôle
+
+  /**
+    * @fn  void tourBarman();
+    * @brief fonction du tour du barman
+  */      
+  void tourBarman();
+
+  /**
+    * @fn  void tourGratteur();
+    * @brief fonction du tour du gratteur de verre
+  */      
+  void tourGratteur();
+
+  /**
+    * @fn  void tourEthylotest();
+    * @brief fonction du tour de l'éthylotest
+  */      
+  void tourEthylotest();
+
+  /**
+    * @fn  void tourMaladroit();
+    * @brief fonction du tour du maladroit
+  */      
+  void tourMaladroit();
+
+  /**
+    * @fn  void tourProtege();
+    * @brief fonction du tour du Protège verre
+  */  
+  void tourProtege();
+
+  /**
+    * @fn  void initNuit();
+    * @brief fonction qui initialise la nuit (à faire à chaque tour)
+  */  
+  void initNuit();
 
   public:
-    // Constructeur qui prend les objets existants
-    Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
 
-    // La fonction principale qui lance toute la séquence
-    void lancerLaNuit();
+  /**
+  * @fn   Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
+  * @brief Constructeur qui prend les objets existants
+  */ 
+  Nuit(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
+
+  /**
+  * @fn   void lancerLaNuit();
+  * @brief Fonction principale qui lance toute la séquence
+  */ 
+  void lancerLaNuit();
 };
 
 #endif

@@ -32,7 +32,8 @@ class Jour
 
     void EstMort();
     void RecapGorgees();
-    void QuiGagne();
+    bool PartieFinie;
+    
 
   public :
     /**
@@ -47,5 +48,10 @@ class Jour
     */    
     void lancerLeJour();
 
+    int QuiGagne();
+
+    bool getPartieFinie ();
+
+    void setPartieFinie(bool resu);
 };
 #endif

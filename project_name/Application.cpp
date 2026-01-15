@@ -54,7 +54,14 @@ void Application::run(void)
   MonEcran.Afficher_message("Joueur" + String(i + 1), NouveauJeu.getJoueur(i)->getRole());
   delay(1000);
   }
+  MonJour.setPartieFinie(false);
+
+  while (MonJour.getPartieFinie() == false) {
   MaNuit.lancerLaNuit();
+
+  MonJour.lancerLeJour();
+  }
+
   delay(1000);
   MonJour.lancerLeJour();
 

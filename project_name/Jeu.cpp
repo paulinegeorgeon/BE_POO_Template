@@ -33,6 +33,7 @@ void Jeu::RepartitionRoles() {
           
           listeJoueurs[i].setNbGorgees(7); // Initialisation des gorgées à 7
           listeJoueurs[i].setEstMort(false); // Initialisation joueur vivant
+          listeJoueurs[i].setImmunise(false); //initialisation de l'immunité des joueurs
           
           Serial.print("Joueur "); //affichage des rôles
           Serial.print(i);
@@ -59,7 +60,7 @@ void Jeu::retirerGorgees(int indexcible){
     }
 }
 
-void Jeu::immuniserJoueur(int index) {
-  listeJoueurs[index].setImmunise(true);
+void Jeu::immuniserJoueur(int index, bool EstImm) {
+  listeJoueurs[index].setImmunise(EstImm);
 }
  
