@@ -32,7 +32,7 @@ class Jour
 
     void EstMort();
     void RecapGorgees();
-    void QuiGagne();
+    int QuiGagne();
 
   public :
     /**
