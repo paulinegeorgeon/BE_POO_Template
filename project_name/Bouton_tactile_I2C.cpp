@@ -11,6 +11,8 @@ i2ctouchsensor touchsensor;
 Bouton_tactile_I2C::Bouton_tactile_I2C(){ ///constructeur
 }; 
 
+Bouton_tactile_I2C::~Bouton_tactile_I2C(){ ///constructeur
+}; 
 
 void Bouton_tactile_I2C::initialiser(){ //initialise tout l'I2C touch sensor 
   Wire.begin();
