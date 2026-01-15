@@ -1,3 +1,9 @@
+/*********************************************************************
+ * @file  Jeu.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Classe de descrpition des règles du jeu 
+ *********************************************************************/
+
 #include "Jeu.h"
 
 Jeu::Jeu() {
@@ -9,9 +15,9 @@ Jeu::~Jeu() {
 }
 
 void Jeu::RepartitionRoles() {
-    // 1. D'abord, on mélange le tableau rolesDisponibles
-    // Algorithme de mélange simple : on échange deux cases au hasard plusieurs fois
-    
+
+    // on mélange le tableau rolesDisponibles
+    // mélange simple : on échange deux cases au hasard plusieurs fois
     for (int i = 0; i < 6; i++) {
         int r = random(6); // un nombre entre 0 et 5
         
@@ -20,16 +26,15 @@ void Jeu::RepartitionRoles() {
         rolesDisponibles[i] = rolesDisponibles[r];
         rolesDisponibles[r] = temp;
       }
+
+    //distribution des rôles 
     for (int i = 0; i < 6; i++) {
-          // On prend le rôle i et on le donne au joueur i
           listeJoueurs[i].setRole(rolesDisponibles[i]);
           
-          // On initialise aussi leurs gorgées à 7 par sécurité
-          listeJoueurs[i].setNbGorgees(7);
-          listeJoueurs[i].setEstMort(false);
+          listeJoueurs[i].setNbGorgees(7); // Initialisation des gorgées à 7
+          listeJoueurs[i].setEstMort(false); // Initialisation joueur vivant
           
-          // Debug pour vérifier dans la console
-          Serial.print("Joueur ");
+          Serial.print("Joueur "); //affichage des rôles
           Serial.print(i);
           Serial.print(" est : ");
           Serial.println(listeJoueurs[i].getRole());
@@ -37,7 +42,6 @@ void Jeu::RepartitionRoles() {
 }
 
 Joueur* Jeu::getJoueur(int index) {
-    // Sécurité : on vérifie que l'index est bien entre 0 et 5
     if (index >= 0 && index < 6) {
         return &listeJoueurs[index]; // On retourne l'adresse du joueur dans le tableau
     } else {
@@ -56,7 +60,6 @@ void Jeu::retirerGorgees(int indexcible){
 }
 
 void Jeu::immuniserJoueur(int index) {
-    
-  listeJoueurs[index].setImmunise();
+  listeJoueurs[index].setImmunise(true);
 }
  
