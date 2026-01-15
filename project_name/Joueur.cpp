@@ -1,7 +1,10 @@
+/*********************************************************************
+ * @file  Joueur.cpp
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Classe d'un joueur 
+ *********************************************************************/
+
 #include "Joueur.h"
-#include <iostream> 
-#include "string.h"
-using namespace std;
 
 Joueur::Joueur() {
   estmort = false;
@@ -37,8 +40,8 @@ void Joueur::setEstMort(bool EstMort) {
 bool Joueur::getEstMort() {
   return estmort;
 }
-void Joueur::setImmunise() {
-  estImmunise = true;
+void Joueur::setImmunise(bool EstImm) {
+  estImmunise = EstImm;
 }
 
 bool Joueur::getImmunise(){
