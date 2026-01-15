@@ -24,7 +24,7 @@ class Bouton_tactile_I2C : public Capteurs{
      * @fn uint8_t Num_Capteur
      * @brief numéro du capteur codé sur 8 bits chaque bit correspondant à chaque capteur
     */ 
-    uint8_t Num_Capteur; Bouton
+    uint8_t Num_Capteur; 
 
   public :
 

@@ -47,7 +47,7 @@ void Application::run(void)
   //----DISTRIBUTION DES ROLES----
   for (int i = 0; i < 6; i++) {
       MonEcran.Afficher_message("Joueur " + String(i + 1), "Appuie pr voir");
-
+     
       // On attend qu'il appuie sur un bouton
       int interaction = -1; 
       while (interaction == -1){
