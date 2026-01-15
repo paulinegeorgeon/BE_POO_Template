@@ -27,7 +27,7 @@ class Jeu {
         "Barman", 
         "Gratteur Verre", 
         "Gratteur Verre",
-        "Capote de Verre", 
+        "Protège Verre", 
         "Ethylotest"
     };
 
