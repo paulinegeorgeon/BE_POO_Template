@@ -58,6 +58,11 @@ void Application::run(void)
 
   while (MonJour.getPartieFinie() == false) {
   MaNuit.lancerLaNuit();
+
   MonJour.lancerLeJour();
   }
+
+  delay(1000);
+  MonJour.lancerLeJour();
+
 }

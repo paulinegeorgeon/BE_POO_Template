@@ -12,7 +12,6 @@
 #include "Jeu.h"
 #include "Ecran_LED.h"
 #include "sonMP3.h"
-#include "Bouton_tactile_I2C.h"
 
 using namespace std;
 
@@ -28,30 +27,24 @@ class Jour
     Jeu& jeuRef;
     Ecran_LED& ecranRef;
     SONMP3& sonRef;
-    Bouton_tactile_I2C bouton;
-
-    void EstMort();
-    void RecapGorgees();
-    bool PartieFinie;
-    
+    int selectionnerJoueur();
 
   public :
     /**
      * @fn Jour();
      * @brief Constructeur par defaut
     */    
-    Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
+    Jour((Jeu& jeu, Ecran_LED& ecran, SONMP3& son););
     /**
+     * @fn Jour();
+     * @brief Destructeur
+    */    
+    ~Jour();    
     /**
      * @fn lancerLeJour();
      * @brief Partie du jour
     */    
     void lancerLeJour();
 
-    int QuiGagne();
-
-    bool getPartieFinie ();
-
-    void setPartieFinie(bool resu);
 };
 #endif
