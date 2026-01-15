@@ -21,7 +21,7 @@ class SONMP3 : public Actionneurs
   protected : 
     /**
      * @fn SoftwareSerial* _serial
-     * @brief variable qui sert à instancier les pins 
+     * @brief pointeur vers un objet de communication série. C'est ce qui permet de parler au module MP3 via les Pins. 
     */ 
     SoftwareSerial* _serial;
 
@@ -39,7 +39,7 @@ class SONMP3 : public Actionneurs
 
     /**
      * @fn void sendCmd(uint8_t cmd, uint16_t dat)
-     * @brief écrit le numéro des pistes audios
+     * @brief message envoyé au module
     */ 
     void sendCmd(uint8_t cmd, uint16_t dat); 
 
@@ -72,7 +72,7 @@ class SONMP3 : public Actionneurs
 
     /**
      * @fn setVolume(uint8_t volume)
-     * @brief règle le volume entre 0 et 100
+     * @brief règle le volume entre 0 et 30
     */    
     void setVolume(uint8_t volume);
 
