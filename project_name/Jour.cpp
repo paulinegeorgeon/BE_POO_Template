@@ -27,10 +27,11 @@ void Jour::EstMort(){
             if (!p->getEstMort() && p->getNbGorgees() <= 0) 
             {
                 p->setEstMort(true);
+
                 String ligne1 = "Joueur " + String(i + 1) ;
                 String ligne2 = "est mort";
                 ecranRef.Afficher_message(ligne1, ligne2);
-
+                delay(3000);
             }
         }
     }
@@ -42,6 +43,11 @@ void Jour::RecapGorgees(){
 
         String ligne1 = "Joueur " + String(i+1) ;
         String ligne2 = String(p->getNbGorgees()) + " gorgees";
+
+        if (p->getEstMort()) {
+                ligne2 = "MORT";
+        }
+
         ecranRef.Afficher_message(ligne1, ligne2);
         delay(3000); // 3 secondes pour lire par joueur
     }
@@ -54,7 +60,7 @@ int Jour::QuiGagne(){
     for (int i = 0; i < 6; i++) {
         Joueur* j = jeuRef.getJoueur(i);
         if (j != nullptr && !j->getEstMort()) {
-            if (j->getRole() == "Gratteur de verre") {
+            if (j->getRole() == "Gratteur Verre") {
                 vivantsGratteurs++;
             } else {
                 vivantsVillageois++;
@@ -68,12 +74,11 @@ int Jour::QuiGagne(){
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
 
-        return 1; // Code pour victoire villageois
-        PartieFinie = true;
 
         delay(1000);
         ecranRef.eteindre();
-
+        PartieFinie = true;
+        return 1; // Code pour victoire villageois
     }
 
     if (vivantsGratteurs >= vivantsVillageois) {
@@ -82,12 +87,11 @@ int Jour::QuiGagne(){
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
 
-        return 2; // Code pour victoire gratteurs
-        PartieFinie = true; 
 
         delay(1000);
         ecranRef.eteindre();
-
+        PartieFinie = true;
+        return 2; // Code pour victoire gratteurs
     }
     else {
         return 0;
@@ -95,27 +99,28 @@ int Jour::QuiGagne(){
 }
 
 void Jour::lancerLeJour() {
-    ecranRef.Afficher_message("Le soleil", "se leve...");
     sonRef.playSong(1);
-    delay(2000);
+    ecranRef.Afficher_message("Le soleil", "se leve...");
+    delay(7000);
 
 
     ecranRef.Afficher_message("Recapitulatif", "des scores...");
     sonRef.playSong(2);
     RecapGorgees();
-    delay(2000);
+    delay(5000);
 
     EstMort();
 
     QuiGagne();
 
-    //peut-être afficher qui est mort
+//VOTE DU VILLAGE
     sonRef.playSong(3);
     ecranRef.Afficher_message("Vote du village", "Qui sauver ?"); 
     delay(1000);
     ecranRef.Afficher_message("Appuyez sur", "un joueur");
-    delay(1000);
+    delay(3000);
     sonRef.playSong(4);
+    delay(5000);
 
     int elu = -1; 
     while (elu==-1){
@@ -123,24 +128,26 @@ void Jour::lancerLeJour() {
       delay(50); 
     }
 
+
+//RETIRER GORGEES APRES LE VOTE
     jeuRef.retirerGorgees(elu-1); 
     jeuRef.retirerGorgees(elu-1); 
     
+
     sonRef.playSong(5);
     ecranRef.Afficher_message("Le joueur " + String(elu), "perd 2 gorgees");
-    delay(3000);
+    delay(5000);
 
     sonRef.playSong(2);
     ecranRef.Afficher_message("Recapitulatif", "des scores...");
-    delay(2000);
-
+    delay(5000);
     RecapGorgees();
     EstMort();
     QuiGagne();
 
 
     //faire audio "retour à la nuit"
-    ecranRef.Afficher_message("Fin du tour", "La nuit revient");
+    ecranRef.Afficher_message("Fin du jour", " ");
     delay(2000);
 
 }

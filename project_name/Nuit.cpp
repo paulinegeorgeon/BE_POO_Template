@@ -21,6 +21,7 @@ void Nuit::initNuit(){
 
 // TOUR DU BARMAN
 void Nuit::tourBarman() {
+  sonRef.playSong(6);
   ecranRef.Afficher_message("Le Barman", "se reveille");
   delay(2000);
   ecranRef.Afficher_message("Barman", "Qui faire boire?");
@@ -36,11 +37,14 @@ void Nuit::tourBarman() {
   jeuRef.ajouterGorgees(cible-1);
   delay(2000);
   ecranRef.Afficher_message("C'est fait !", "");
-  delay(3000);
+  delay(2000);
+  sonRef.playSong(7);
+  delay(5000);
 }
 
 //TOUR DU GRATTEUR
 void Nuit::tourGratteur() {
+  sonRef.playSong(8);
   ecranRef.Afficher_message("Le Gratteur", "se reveille");
   delay(2000);
   ecranRef.Afficher_message("Gratteur(s)", "Qui soulager?");  
@@ -57,10 +61,13 @@ void Nuit::tourGratteur() {
   delay(2000);
   ecranRef.Afficher_message("C'est fait !", "");
   delay(3000);
+  sonRef.playSong(9);
+  delay(5000);
 }
 
 //TOUR DU PROTEGE VERRRE
 void Nuit::tourProtege() {
+  sonRef.playSong(10);
   ecranRef.Afficher_message("Le Protecteur", "se reveille");
   delay(2000);
   ecranRef.Afficher_message("Protecteur :", "Qui proteger ?");
@@ -79,11 +86,14 @@ void Nuit::tourProtege() {
   delay(2000);
   
   ecranRef.Afficher_message("Le Protecteur", "se rendort");
-  delay(3000);
+  delay(1000);
+  sonRef.playSong(11);
+  delay(5000);
 }
 
 //TOUR DU MALADROIT
 void Nuit::tourMaladroit() {
+  sonRef.playSong(12);
   ecranRef.Afficher_message("Le Maladroit", "se reveille");
   delay(2000);
   ecranRef.Afficher_message("Maladroit :", "Qui renverser ?");
@@ -102,11 +112,14 @@ void Nuit::tourMaladroit() {
   delay(2000);
   
   ecranRef.Afficher_message("Le Maladroit", "se rendort");
-  delay(3000);
+  delay(2000);
+  sonRef.playSong(13);
+  delay(5000);
 }
 
 //TOUR ETHYLOTEST
 void Nuit::tourEthylotest() {
+  sonRef.playSong(14);
   ecranRef.Afficher_message("L'Ethylotest", "se reveille");
   delay(2000);
   ecranRef.Afficher_message("Ethylotest :", "Qui tester ?");
@@ -122,13 +135,15 @@ void Nuit::tourEthylotest() {
   int nbGorgees = pJoueur->getNbGorgees();
   
   ecranRef.Afficher_message("Resultat :", String(nbGorgees) + " gorgees");
-  delay(4000);
+  delay(3000);
   
   ecranRef.Afficher_message("Analyse", "terminee");
   delay(1000);
   
   ecranRef.Afficher_message("L'Ethylotest", "se rendort");
   delay(1000);
+  sonRef.playSong(15);
+  delay(5000);
 }
 
 
@@ -139,7 +154,7 @@ void Nuit::lancerLaNuit() {
     // Initialisaiton de la nuit
     initNuit(); 
     ecranRef.Afficher_message("La Nuit", "Tombe...");
-    sonRef.playSong(1);
+    //sonRef.playSong(16);
     delay(2000);
 
     // Déroulement de la nuit
