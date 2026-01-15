@@ -33,7 +33,7 @@ void Nuit::tourBarman() {
     delay(50); 
   }
 
-  jeuRef.ajouterGorgees(cible);
+  jeuRef.ajouterGorgees(cible-1);
   delay(2000);
   ecranRef.Afficher_message("C'est fait !", "");
   delay(3000);
@@ -52,8 +52,8 @@ void Nuit::tourGratteur() {
     delay(50); 
   }
 
-  jeuRef.retirerGorgees(cible);
-  jeuRef.retirerGorgees(cible);
+  jeuRef.retirerGorgees(cible-1);
+  jeuRef.retirerGorgees(cible-1);
   delay(2000);
   ecranRef.Afficher_message("C'est fait !", "");
   delay(3000);
@@ -72,7 +72,7 @@ void Nuit::tourProtege() {
     delay(50); 
   }
 
-  jeuRef.immuniserJoueur(cible, true);
+  jeuRef.immuniserJoueur(cible-1, true);
   
   delay(2000);
   ecranRef.Afficher_message("Joueur " + String(cible), "est protege !");
@@ -95,7 +95,7 @@ void Nuit::tourMaladroit() {
     delay(50); 
   }
 
-  jeuRef.retirerGorgees(cible);
+  jeuRef.retirerGorgees(cible-1);
 
   delay(2000);    
   ecranRef.Afficher_message("Oups ! Verre", "renverse...");
@@ -118,7 +118,7 @@ void Nuit::tourEthylotest() {
     delay(50); 
   }
   
-  Joueur* pJoueur = jeuRef.getJoueur(cible);
+  Joueur* pJoueur = jeuRef.getJoueur(cible-1);
   int nbGorgees = pJoueur->getNbGorgees();
   
   ecranRef.Afficher_message("Resultat :", String(nbGorgees) + " gorgees");

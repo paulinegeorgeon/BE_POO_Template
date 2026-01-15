@@ -27,12 +27,6 @@ void Jour::EstMort(){
             if (!p->getEstMort() && p->getNbGorgees() <= 0) 
             {
                 p->setEstMort(true);
-
-
-            String ligne1 = "Joueur " + String(i + 1) ;
-            String ligne2 = "est mort";
-            ecranRef.Afficher_message(ligne1, ligne2);
-
                 String ligne1 = "Joueur " + String(i + 1) ;
                 String ligne2 = "est mort";
                 ecranRef.Afficher_message(ligne1, ligne2);
@@ -77,7 +71,7 @@ int Jour::QuiGagne(){
         return 1; // Code pour victoire villageois
         PartieFinie = true;
 
-        delay(10000);
+        delay(1000);
         ecranRef.eteindre();
 
     }
@@ -91,11 +85,13 @@ int Jour::QuiGagne(){
         return 2; // Code pour victoire gratteurs
         PartieFinie = true; 
 
-        delay(10000);
+        delay(1000);
         ecranRef.eteindre();
 
     }
-
+    else {
+        return 0;
+    }
 }
 
 void Jour::lancerLeJour() {
@@ -116,9 +112,9 @@ void Jour::lancerLeJour() {
     //peut-être afficher qui est mort
     sonRef.playSong(3);
     ecranRef.Afficher_message("Vote du village", "Qui sauver ?"); 
-    delay(10000);
+    delay(1000);
     ecranRef.Afficher_message("Appuyez sur", "un joueur");
-    delay(10000);
+    delay(1000);
     sonRef.playSong(4);
 
     int elu = -1; 
@@ -142,7 +138,6 @@ void Jour::lancerLeJour() {
     EstMort();
     QuiGagne();
 
-    QuiGagne();
 
     //faire audio "retour à la nuit"
     ecranRef.Afficher_message("Fin du tour", "La nuit revient");

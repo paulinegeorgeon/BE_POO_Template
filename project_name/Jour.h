@@ -36,12 +36,12 @@ class Jour
     
 
   public :
+    ~Jour();
     /**
      * @fn Jour();
      * @brief Constructeur par defaut
     */    
     Jour(Jeu& jeu, Ecran_LED& ecran, SONMP3& son, Bouton_tactile_I2C& bouton);
-    /**
     /**
      * @fn lancerLeJour();
      * @brief Partie du jour
