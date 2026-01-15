@@ -1,7 +1,7 @@
 /*********************************************************************
- * @file  Apllication.h
- * @author <mettre l'adresse mail ou nom prenom>
- * @brief Fichier de classe 
+ * @file  Application.h
+ * @author CALVO - YOGALINGAM - GEORGEON
+ * @brief Fichier classe Application
  *********************************************************************/
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
