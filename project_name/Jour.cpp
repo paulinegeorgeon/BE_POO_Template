@@ -73,10 +73,8 @@ int Jour::QuiGagne(){
         String ligne2 = "gagnent";
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
-
-
         delay(1000);
-        ecranRef.eteindre();
+        
         PartieFinie = true;
         return 1; // Code pour victoire villageois
     }
@@ -86,10 +84,7 @@ int Jour::QuiGagne(){
         String ligne2 = "gagnent";
         delay(1000);
         ecranRef.Afficher_message(ligne1, ligne2);
-
-
         delay(1000);
-        ecranRef.eteindre();
         PartieFinie = true;
         return 2; // Code pour victoire gratteurs
     }
@@ -105,7 +100,7 @@ void Jour::lancerLeJour() {
 
 
     ecranRef.Afficher_message("Recapitulatif", "des scores...");
-    sonRef.playSong(2);
+    sonRef.playSong(2);    delay(5000);
     RecapGorgees();
     delay(5000);
 
@@ -116,7 +111,7 @@ void Jour::lancerLeJour() {
 //VOTE DU VILLAGE
     sonRef.playSong(3);
     ecranRef.Afficher_message("Vote du village", "Qui sauver ?"); 
-    delay(1000);
+    delay(5000);
     ecranRef.Afficher_message("Appuyez sur", "un joueur");
     delay(3000);
     sonRef.playSong(4);

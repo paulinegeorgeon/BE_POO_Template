@@ -26,8 +26,9 @@ void Nuit::tourBarman() {
 
   //regarde si le barman est mort
   if (!(jeuRef.getJoueur(numJoueur)->getEstMort())){ 
-
+    delay(5000);
     sonRef.playSong(6);
+    delay(3000);
     ecranRef.Afficher_message("Le Barman", "se reveille");
     delay(2000);
     ecranRef.Afficher_message("Barman", "Qui faire boire?");
@@ -87,6 +88,7 @@ void Nuit::tourProtege() {
   if (!(jeuRef.getJoueur(numJoueur)->getEstMort())){ 
 
     sonRef.playSong(10);
+
     ecranRef.Afficher_message("Le Protecteur", "se reveille");
     delay(2000);
     ecranRef.Afficher_message("Protecteur :", "Qui proteger ?");
@@ -186,8 +188,9 @@ void Nuit::lancerLaNuit() {
     // Initialisaiton de la nuit
     initNuit(); 
     ecranRef.Afficher_message("La Nuit", "Tombe...");
+    delay(5000);
     sonRef.playSong(16);
-    delay(2000);
+    delay(5000);
 
     // Déroulement de la nuit
     tourBarman();

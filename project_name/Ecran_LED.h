@@ -49,10 +49,9 @@ class Ecran_LED : public Actionneurs
 
     /**
      * @fn void eteindre()
-     * @brief Fonction d'extinction de l'actionneur
+     * @brief Fonction qui éteint l'écran 
     */
     void eteindre();
-
     /**
      * @fn void eteindre()
      * @brief Fonction d'initialisation de l'écran LCD

@@ -43,13 +43,6 @@ void Application::init(void)
 
 void Application::run(void)
 {
-  //MonSon.playSong(1);
-  //MonEcran.Afficher_message("Tout le monde","dort sauf J1!");
-  /*
-  MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
-  delay(3000);   
-  MonEcran.Afficher_message("Joueur ", String(bouton.joueurAppuye())); 
-  delay(3000); */
 
   //----DISTRIBUTION DES ROLES----
   for (int i = 0; i < 6; i++) {
@@ -81,6 +74,7 @@ void Application::run(void)
   }
 
   //LANCEMENT DU JEU  
+  
   MonJour.setPartieFinie(false);
 
   while (MonJour.getPartieFinie() == false) {
@@ -88,8 +82,5 @@ void Application::run(void)
 
   MonJour.lancerLeJour();
   }
-
-  //delay(1000);
-  //MonJour.lancerLeJour();
 
 }
