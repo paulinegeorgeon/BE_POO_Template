@@ -30,6 +30,12 @@ class Capteurs : public Peripheriques {
     Capteurs(int p);
 
     /**
+     * @fn ~Capteurs()
+     * @brief destructeur
+    */ 
+    ~Capteurs();
+
+    /**
      * @fn getValue()
      * @brief récupère la valeur du capteur 
     */ 
